@@ -16,7 +16,7 @@ public class Actividad4_1y2 {
         int seleccionTabla;
         int tablaDelNumero = 0;
         int tablaDelNumeroPerso = 0;
-        
+
         seleccionTabla = Integer.parseInt(JOptionPane.showInputDialog(null, """
                                                                             <html>
                                                                             <h1>Aplicación Tablas de Multiplicar</h1>
@@ -25,11 +25,11 @@ public class Actividad4_1y2 {
                                                                             <h3>2 : Tablas del 1 al 10</h3>
                                                                             <h3>3 : SALIR</h3>
                                                                             </html>
-                                                                            """)); 
-        
+                                                                            """));
+
         if (seleccionTabla == 1) {
-        do {
-            tablaDelNumeroPerso = Integer.parseInt(JOptionPane.showInputDialog(null, """
+            do {
+                tablaDelNumeroPerso = Integer.parseInt(JOptionPane.showInputDialog(null, """
                                                                                 <html>
                                                                                 <h1>Tabla de Multiplicar Personalizada</h1>
                                                                                 <hr />
@@ -37,7 +37,7 @@ public class Actividad4_1y2 {
                                                                                 </html>
                                                                                 """, "Número entero sin decimales."));
 
-        } while (JOptionPane.showConfirmDialog(null, """
+            } while (JOptionPane.showConfirmDialog(null, """
                                                     <html>
                                                     <h1>Confirmación Tabla del %d</h1>
                                                     <hr />
@@ -45,9 +45,9 @@ public class Actividad4_1y2 {
                                                     </html>
                                                     """.formatted(tablaDelNumeroPerso, tablaDelNumeroPerso), "Confirmación Tabla del %d".formatted(tablaDelNumeroPerso), JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION);
 
-        for (int seleccionSalida = 0; seleccionSalida != 3;) {
+            for (int seleccionSalida = 0; seleccionSalida != 3;) {
 
-            seleccionSalida = Integer.parseInt(JOptionPane.showInputDialog(null, """
+                seleccionSalida = Integer.parseInt(JOptionPane.showInputDialog(null, """
                                                                                      <html>
                                                                                      <h1>¿Cómo desea mostrar la Tabla De Multiplicar?</h1>
                                                                                      <hr />
@@ -57,8 +57,8 @@ public class Actividad4_1y2 {
                                                                                      </html>
                                                                                      """));
 
-            if (seleccionSalida == 1) {
-                JOptionPane.showMessageDialog(null, """
+                if (seleccionSalida == 1) {
+                    JOptionPane.showMessageDialog(null, """
                                             <html>
                                             <h1>Tabla del %d</h1>
                                             <hr />
@@ -74,20 +74,20 @@ public class Actividad4_1y2 {
                                             %d x 10 = %d 
                                             </html>
                                             """.formatted(tablaDelNumeroPerso,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 1,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 2,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 3,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 4,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 5,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 6,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 7,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 8,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 9,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 10
-                ), "Tabla del %d".formatted(tablaDelNumeroPerso), JOptionPane.INFORMATION_MESSAGE);
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 1,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 2,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 3,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 4,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 5,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 6,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 7,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 8,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 9,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 10
+                    ), "Tabla del %d".formatted(tablaDelNumeroPerso), JOptionPane.INFORMATION_MESSAGE);
 
-            } else if (seleccionSalida == 2) {
-                System.out.printf("""
+                } else if (seleccionSalida == 2) {
+                    System.out.printf("""
                                   ------------------
                                   == Tabla del %d ==
                                   ------------------
@@ -103,23 +103,23 @@ public class Actividad4_1y2 {
                                   %d x 10 = %d 
                                   ------------------
                                   """,
-                        tablaDelNumeroPerso,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 1,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 2,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 3,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 4,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 5,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 6,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 7,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 8,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 9,
-                        tablaDelNumeroPerso, tablaDelNumeroPerso * 10);
+                            tablaDelNumeroPerso,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 1,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 2,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 3,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 4,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 5,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 6,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 7,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 8,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 9,
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 10);
                 }
             }
-        }else if (seleccionTabla == 2){
-         for (int seleccionSalida = 0; seleccionSalida != 3;) {
+        } else if (seleccionTabla == 2) {
+            for (int seleccionSalida = 0; seleccionSalida != 3;) {
 
-            seleccionSalida = Integer.parseInt(JOptionPane.showInputDialog(null, """
+                seleccionSalida = Integer.parseInt(JOptionPane.showInputDialog(null, """
                                                                                      <html>
                                                                                      <h1>¿Cómo desea mostrar las Tablas De Multiplicar?</h1>
                                                                                      <hr />
@@ -129,8 +129,9 @@ public class Actividad4_1y2 {
                                                                                      </html>
                                                                                      """));
 
-            if (seleccionSalida == 1) {
-            while (tablaDelNumero <= 10){ JOptionPane.showMessageDialog(null, """
+                if (seleccionSalida == 1) {
+                    while (tablaDelNumero <= 10) {
+                        JOptionPane.showMessageDialog(null, """
                                             <html>
                                             <h1>Tabla del %d</h1>
                                             <hr />
@@ -146,22 +147,22 @@ public class Actividad4_1y2 {
                                             %d x 10 = %d 
                                             </html>
                                             """.formatted(tablaDelNumero,
-                        tablaDelNumero, tablaDelNumero * 1,
-                        tablaDelNumero, tablaDelNumero * 2,
-                        tablaDelNumero, tablaDelNumero * 3,
-                        tablaDelNumero, tablaDelNumero * 4,
-                        tablaDelNumero, tablaDelNumero * 5,
-                        tablaDelNumero, tablaDelNumero * 6,
-                        tablaDelNumero, tablaDelNumero * 7,
-                        tablaDelNumero, tablaDelNumero * 8,
-                        tablaDelNumero, tablaDelNumero * 9,
-                        tablaDelNumero, tablaDelNumero * 10
-                ), "Tabla del %d".formatted(tablaDelNumero), JOptionPane.INFORMATION_MESSAGE);
-                tablaDelNumero++;
-                }
-            } else if (seleccionSalida == 2) {
-                while (tablaDelNumero <= 10) {
-                System.out.printf("""
+                                tablaDelNumero, tablaDelNumero * 1,
+                                tablaDelNumero, tablaDelNumero * 2,
+                                tablaDelNumero, tablaDelNumero * 3,
+                                tablaDelNumero, tablaDelNumero * 4,
+                                tablaDelNumero, tablaDelNumero * 5,
+                                tablaDelNumero, tablaDelNumero * 6,
+                                tablaDelNumero, tablaDelNumero * 7,
+                                tablaDelNumero, tablaDelNumero * 8,
+                                tablaDelNumero, tablaDelNumero * 9,
+                                tablaDelNumero, tablaDelNumero * 10
+                        ), "Tabla del %d".formatted(tablaDelNumero), JOptionPane.INFORMATION_MESSAGE);
+                        tablaDelNumero++;
+                    }
+                } else if (seleccionSalida == 2) {
+                    while (tablaDelNumero <= 10) {
+                        System.out.printf("""
                                   ------------------
                                   == Tabla del %d ==
                                   ------------------
@@ -177,21 +178,21 @@ public class Actividad4_1y2 {
                                   %d x 10 = %d 
                                   ------------------
                                   """,
-                        tablaDelNumero,
-                        tablaDelNumero, tablaDelNumero * 1,
-                        tablaDelNumero, tablaDelNumero * 2,
-                        tablaDelNumero, tablaDelNumero * 3,
-                        tablaDelNumero, tablaDelNumero * 4,
-                        tablaDelNumero, tablaDelNumero * 5,
-                        tablaDelNumero, tablaDelNumero * 6,
-                        tablaDelNumero, tablaDelNumero * 7,
-                        tablaDelNumero, tablaDelNumero * 8,
-                        tablaDelNumero, tablaDelNumero * 9,
-                        tablaDelNumero, tablaDelNumero * 10);
+                                tablaDelNumero,
+                                tablaDelNumero, tablaDelNumero * 1,
+                                tablaDelNumero, tablaDelNumero * 2,
+                                tablaDelNumero, tablaDelNumero * 3,
+                                tablaDelNumero, tablaDelNumero * 4,
+                                tablaDelNumero, tablaDelNumero * 5,
+                                tablaDelNumero, tablaDelNumero * 6,
+                                tablaDelNumero, tablaDelNumero * 7,
+                                tablaDelNumero, tablaDelNumero * 8,
+                                tablaDelNumero, tablaDelNumero * 9,
+                                tablaDelNumero, tablaDelNumero * 10);
                         tablaDelNumero++;
                     }
                 }
-            }      
+            }
         }
     }
 }
