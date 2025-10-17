@@ -12,10 +12,12 @@ import javax.swing.JOptionPane;
 public class Actividad4_1y2 {
 
     public static void main(String[] args) {
-        
+
         int seleccionTabla;
         int tablaDelNumero = 0;
+        int tablaDel = 0; //Contador
         int tablaDelNumeroPerso = 0;
+        int tablaDelPerso = 0; //Contador
 
         seleccionTabla = Integer.parseInt(JOptionPane.showInputDialog(null, """
                                                                             <html>
@@ -87,6 +89,7 @@ public class Actividad4_1y2 {
                     ), "Tabla del %d".formatted(tablaDelNumeroPerso), JOptionPane.INFORMATION_MESSAGE);
 
                 } else if (seleccionSalida == 2) {
+                    /*MEJORABLE CON REPETITIVA
                     System.out.printf("""
                                   ------------------
                                   == Tabla del %d ==
@@ -113,7 +116,24 @@ public class Actividad4_1y2 {
                             tablaDelNumeroPerso, tablaDelNumeroPerso * 7,
                             tablaDelNumeroPerso, tablaDelNumeroPerso * 8,
                             tablaDelNumeroPerso, tablaDelNumeroPerso * 9,
-                            tablaDelNumeroPerso, tablaDelNumeroPerso * 10);
+                            tablaDelNumeroPerso, tablaDelNumeroPerso * 10); */
+
+                    System.out.printf("""
+                                  ------------------
+                                  == Tabla del %d ==
+                                  ------------------
+                                           """, tablaDelNumeroPerso);
+
+                    while (tablaDelPerso <= 10) {
+                        System.out.printf("""
+                                              %d x %d = %d 
+                                              """, tablaDelNumeroPerso, tablaDelPerso, tablaDelNumeroPerso * tablaDelPerso);
+                        tablaDelPerso++;
+                    }
+                    System.out.printf("""
+                                  ------------------
+                                          """);
+
                 }
             }
         } else if (seleccionTabla == 2) {
@@ -161,35 +181,27 @@ public class Actividad4_1y2 {
                         tablaDelNumero++;
                     }
                 } else if (seleccionSalida == 2) {
-                    while (tablaDelNumero <= 10) {
+                    int almacenarTablaDelNumero = tablaDelNumero;
+                    while (tablaDel <= 10) {
                         System.out.printf("""
                                   ------------------
                                   == Tabla del %d ==
                                   ------------------
-                                  %d x 1 = %d 
-                                  %d x 2 = %d 
-                                  %d x 3 = %d 
-                                  %d x 4 = %d 
-                                  %d x 5 = %d 
-                                  %d x 6 = %d 
-                                  %d x 7 = %d 
-                                  %d x 8 = %d 
-                                  %d x 9 = %d 
-                                  %d x 10 = %d 
+                                              """, tablaDel);
+                        tablaDelNumero = almacenarTablaDelNumero;
+
+                        while (tablaDelNumero <= 10) {
+                            System.out.printf("""
+                                              %d x %d = %d 
+                                              """, tablaDelNumero, tablaDel, tablaDelNumero * tablaDel);
+
+                            tablaDelNumero++;
+                        }
+                        System.out.printf("""
                                   ------------------
-                                  """,
-                                tablaDelNumero,
-                                tablaDelNumero, tablaDelNumero * 1,
-                                tablaDelNumero, tablaDelNumero * 2,
-                                tablaDelNumero, tablaDelNumero * 3,
-                                tablaDelNumero, tablaDelNumero * 4,
-                                tablaDelNumero, tablaDelNumero * 5,
-                                tablaDelNumero, tablaDelNumero * 6,
-                                tablaDelNumero, tablaDelNumero * 7,
-                                tablaDelNumero, tablaDelNumero * 8,
-                                tablaDelNumero, tablaDelNumero * 9,
-                                tablaDelNumero, tablaDelNumero * 10);
-                        tablaDelNumero++;
+                                          """);
+
+                        tablaDel++;
                     }
                 }
             }

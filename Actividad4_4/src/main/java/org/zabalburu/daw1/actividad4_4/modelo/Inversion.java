@@ -20,7 +20,7 @@ public class Inversion {
         beneficioDelMes = capital * ((porcentajeInteresAnual / 100) / 12);
         beneficioTotal += beneficioDelMes;
         capital += beneficioDelMes;
-        //Si quisieramos añadir aportes mensuales --> capital += aporteMensualExtra;(tendríamos que crear un dato double y almacenarle el aporte mensual.)
+        //capital += 300; Si quisieramos añadir aportes mensuales --> capital += aporteMensualExtra;(tendríamos que crear un dato double y almacenarle el aporte mensual.)
         return beneficioDelMes;
     }
 
