@@ -55,7 +55,7 @@ public class Actividad4_4 {
                            ==============================
                            ------------------------------
                            """, inv.capital, inv.porcentajeInteresAnual, inv.añosInversion);
-        inv.calculoInversonPorMeses(); //Método para mostrar los meses en función a los años.
+        inv.calculoInversionPorMeses(); //Método para mostrar los meses en función a los años.
 
         JOptionPane.showMessageDialog(null, """
                                             <html>

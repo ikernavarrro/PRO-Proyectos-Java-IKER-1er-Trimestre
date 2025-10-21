@@ -13,20 +13,18 @@ public class Inversion {
     public double capital;
     public double porcentajeInteresAnual;
     public int añosInversion;
-    public double beneficioDelMes;
-    public double beneficioTotal = 0; // Acumulador
 
     public double beneficioMensual() {
+        double beneficioDelMes;
         beneficioDelMes = capital * ((porcentajeInteresAnual / 100) / 12);
-        beneficioTotal += beneficioDelMes;
         capital += beneficioDelMes;
         //capital += 300; Si quisieramos añadir aportes mensuales --> capital += aporteMensualExtra;(tendríamos que crear un dato double y almacenarle el aporte mensual.)
         return beneficioDelMes;
     }
 
-    public String calculoInversonPorMeses() {
+    public String calculoInversionPorMeses() {
         for (int i = 1; i <= (añosInversion * 12); i++) {
-            System.out.println("Mes: " + i + " | Beneficio: " + beneficioMensual() + "€ | Capital: " + (beneficioTotal + capital) + "€");
+            System.out.println("Mes: " + i + " | Beneficio: " + beneficioMensual() + "€ | Capital: " + capital + "€");
         }
         return null;
     }

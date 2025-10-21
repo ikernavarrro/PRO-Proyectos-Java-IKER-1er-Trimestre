@@ -45,9 +45,9 @@ public class Alumno {
                 sumaNotas += notaAlumnoProcesado;
             }
         }
-        
-        double notaMedia = sumaNotas / contadorAlumnos;
-        
+
+        double notaMedia = sumaNotas / (double) contadorAlumnos;
+
         JOptionPane.showMessageDialog(null, """
                                             <html>
                                                 <hr />
