@@ -55,11 +55,11 @@ public class Envio {
         String descripcionTipo = "";
         if (tipoEnvio >= 1 && tipoEnvio <= 4) {
             descripcionTipo = switch (tipoEnvio) {
-                case 1 ->
+                case TIPO_ENVIO_NORMAL ->
                     "Normal";
-                case 2 ->
+                case TIPO_ENVIO_EXPRESS ->
                     "Express";
-                case 3 ->
+                case TIPO_ENVIO_24_HORAS ->
                     "24 Horas";
                 default ->
                     "8 Horas";
@@ -72,9 +72,9 @@ public class Envio {
         double costeBase = 0;
         if (tipoEnvio >= 1 && tipoEnvio <= 4) {
             costeBase = switch (tipoEnvio) {
-                case 1 -> 7;
-                case 2 -> 10;
-                case 3 -> 12;
+                case TIPO_ENVIO_NORMAL -> 7;
+                case TIPO_ENVIO_EXPRESS -> 10;
+                case TIPO_ENVIO_24_HORAS -> 12;
                 default -> 15;
             };
         }
@@ -85,9 +85,9 @@ public class Envio {
         double coste200 = 0;
         if (tipoEnvio >= 1 && tipoEnvio <= 4) {
             coste200 = switch (tipoEnvio) {
-                case 1 -> 0.5;
-                case 2 -> 0.7;
-                case 3 -> 0.8;
+                case TIPO_ENVIO_NORMAL -> 0.5;
+                case TIPO_ENVIO_EXPRESS -> 0.7;
+                case TIPO_ENVIO_24_HORAS -> 0.8;
                 default -> 0.9;
             };
         }
@@ -108,5 +108,20 @@ public class Envio {
         return this.getCosteBase() + this.getCostePeso();
     }
     
+    public double getDescuento() {
+        double descuento;
+        if (this.getCoste() < 50) {
+            descuento = this.getCoste() * 0;
+        } else if (this.getCoste() >= 50 && this.getCoste() < 100) {
+            descuento = this.getCoste() * 0.03;
+        } else {
+            descuento = this.getCoste() * 0.05;
+        }
+        return descuento;
+    }
+    
+    public double getCosteConDescuento() {
+        return this.getCoste() + this.getDescuento();
+    }
     
 }

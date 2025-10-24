@@ -4,6 +4,8 @@
 
 package org.zabalburu.daw1._ejercicio_adicional;
 
+import org.zabalburu.daw1._ejercicio_adicional.modelo.Envio;
+
 /**
  *
  * @author Iker Navarro Pérez
