@@ -14,11 +14,14 @@ public class Actividad4_2 {
 
     public static void main(String[] args) {
         
-        Empleado xx = new Empleado();
+        Empleado empleado;
         String resp = "";
-        
+        int numEmpleados = 0;
+        int cobraMasDe200 = 0;
         do {
-            xx.nombre = JOptionPane.showInputDialog(null, 
+            empleado = new Empleado();
+            numEmpleados++;
+            empleado.nombre = JOptionPane.showInputDialog(null, 
                     """
                     <html>
                         <h1>Introduzca el Nombre de un Nuevo Empleado:</h1> 
@@ -38,7 +41,7 @@ public class Actividad4_2 {
                         </p>
                     </html>
                     """);
-            xx.tipo = Integer.parseInt(resp);
+            empleado.tipo = Integer.parseInt(resp);
             
             resp = JOptionPane.showInputDialog(null, 
                     """
@@ -46,7 +49,7 @@ public class Actividad4_2 {
                         <h1>Introduzca el Número de hijos del Nuevo Empleado:</h1> 
                     </html>
                     """);
-            xx.hijos = Integer.parseInt(resp);
+            empleado.hijos = Integer.parseInt(resp);
             
             JOptionPane.showMessageDialog(null, 
                     """
@@ -60,8 +63,8 @@ public class Actividad4_2 {
                         </p>
                         <hr />
                     </html>
-                    """.formatted(xx.nombre, xx.getDescripción(), xx.hijos, xx.getSueldoBase()),
-                    "Datos de %s".formatted(xx.nombre),
+                    """.formatted(empleado.nombre, empleado.getDescripción(), empleado.hijos, empleado.getSueldoBase()),
+                    "Datos de %s".formatted(empleado.nombre),
                     JOptionPane.INFORMATION_MESSAGE);
             
             do{
@@ -75,7 +78,7 @@ public class Actividad4_2 {
                         </p>
                     </html>
                     """);
-                xx.nuevoPlus(Integer.parseInt(resp)); // Llamámos al método que suma automáticamente los pluses y Convertimos la respuesta del usuario a un Entero.
+                empleado.nuevoPlus(Integer.parseInt(resp)); // Llamámos al método que suma automáticamente los pluses y Convertimos la respuesta del usuario a un Entero.
             }while (Integer.parseInt(resp) != 0); // Comparamos la respuesta, si no es 0 volvemos a pedir otro plus.
             
             JOptionPane.showMessageDialog(null, 
@@ -90,10 +93,12 @@ public class Actividad4_2 {
                         </p>
                         <hr />
                     </html>
-                    """.formatted(xx.pluses, xx.getSueldoBruto(), xx.getPorcIRPF(), xx.getImporteIRPF(), xx.getSueldoNeto()),
-                    "Datos de %s".formatted(xx.nombre),
+                    """.formatted(empleado.pluses, empleado.getSueldoBruto(), empleado.getPorcIRPF(), empleado.getImporteIRPF(), empleado.getSueldoNeto()),
+                    "Datos de %s".formatted(empleado.nombre),
                     JOptionPane.INFORMATION_MESSAGE);
-             
+             if (empleado.getSueldoNeto() >= 2000) {
+                 cobraMasDe200++;
+             }
             resp = JOptionPane.showInputDialog(null, 
                     """
                     <html>

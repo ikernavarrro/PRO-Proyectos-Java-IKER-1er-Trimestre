@@ -116,7 +116,7 @@ public class Empleado {
             case 0: // CON 0 HIJOS
                 if (getSueldoBruto() < 1350) {
                     porcIRPF = 13;
-                } else if (getSueldoBruto() >= 1350 && getSueldoBruto() < 1450) {
+                } else if (getSueldoBruto() < 1450) {
                     porcIRPF = 14;
                 } else {
                     porcIRPF = 17;
@@ -125,7 +125,7 @@ public class Empleado {
             case 1: // CON 1 HIJO
                 if (getSueldoBruto() < 1350) {
                     porcIRPF = 12.5;
-                } else if (getSueldoBruto() >= 1350 && getSueldoBruto() < 1450) {
+                } else if (getSueldoBruto() < 1450) {
                     porcIRPF = 13;
                 } else {
                     porcIRPF = 16;
@@ -134,7 +134,7 @@ public class Empleado {
             case 2: // CON 2 HIJOS
                 if (getSueldoBruto() < 1350) {
                     porcIRPF = 11;
-                } else if (getSueldoBruto() >= 1350 && getSueldoBruto() < 1450) {
+                } else if (getSueldoBruto() < 1450) {
                     porcIRPF = 12;
                 } else {
                     porcIRPF = 15;
@@ -143,7 +143,7 @@ public class Empleado {
             default: // Por defecto, es decir que no sean ni 0 ni 1 ni 2 hijos, 3 o +.
                 if (getSueldoBruto() < 1350) {
                     porcIRPF = 10;
-                } else if (getSueldoBruto() >= 1350 && getSueldoBruto() < 1450) {
+                } else if (getSueldoBruto() < 1450) {
                     porcIRPF = 11.5;
                 } else {
                     porcIRPF = 14.5;
