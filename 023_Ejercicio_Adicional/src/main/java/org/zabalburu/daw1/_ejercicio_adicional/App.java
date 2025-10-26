@@ -17,6 +17,21 @@ public class App {
         Envio nuevoEnvio;
         int tipoEnvio = 0;
         int diaSemana = 0;
+        
+        int totalEnviosDia = 0;
+        double sumaImporteTotalDia = 0;
+        double sumaDescuentosTotalDia = 0;
+        double sumaImporteTotalDescuentosDia = 0;
+        
+        int totalEnviosSemana = 0;
+        double sumaImporteTotalSemana = 0;
+        double sumaDescuentosTotalSemana = 0;
+        double sumaImporteTotalDescuentosSemana = 0;
+        double totalPesoSemanaGramos = 0;
+        
+        int contadorImporteSuperior200Dia = 0;
+        int contadorImporteSuperior200Semana = 0;
+        
 
         for (diaSemana = 1; diaSemana <= 5; diaSemana++) {
             String nombreDia = "";
@@ -27,6 +42,11 @@ public class App {
                 case 4 -> "Jueves";
                 default -> "Viernes";
             };
+            totalEnviosDia = 0;
+            sumaImporteTotalDia = 0;
+            sumaDescuentosTotalDia = 0;
+            sumaImporteTotalDescuentosDia = 0;     
+            contadorImporteSuperior200Dia = 0;
             do {
                 String resp = JOptionPane.showInputDialog(null,
                         """
@@ -41,13 +61,15 @@ public class App {
                         </ol>
                         <hr />
                         <p>
-                            Introduzca un tipo de servicio. 1-4
+                            Introduzca <b>0</b> para continuar con un NUEVO día.
                         </p>
                     </html>    
                     """.formatted(nombreDia), JOptionPane.PLAIN_MESSAGE);
                 tipoEnvio = Integer.parseInt(resp);
                 if (tipoEnvio != 0) {
                     nuevoEnvio = new Envio();
+                    totalEnviosSemana++;
+                    totalEnviosDia++;
                     resp = JOptionPane.showInputDialog(null,
                             """
                         <html>
@@ -94,7 +116,20 @@ public class App {
                     if (descuento != 0) {
                         costeConDescuento = nuevoEnvio.getCoste(tipoEnvio) - descuento;
                     }
-
+                    
+                    if (contadorImporteSuperior200Dia == 0 && nuevoEnvio.getCoste(tipoEnvio) > 200) {
+                        contadorImporteSuperior200Dia++;
+                    }
+                    
+                    sumaImporteTotalSemana += nuevoEnvio.getCoste(tipoEnvio);
+                    sumaDescuentosTotalSemana += descuento;
+                    sumaImporteTotalDescuentosSemana += costeConDescuento;
+                    totalPesoSemanaGramos += nuevoEnvio.getPesoEnGramos();
+                    
+                    sumaImporteTotalDia += nuevoEnvio.getCoste(tipoEnvio);
+                    sumaDescuentosTotalDia += descuento;
+                    sumaImporteTotalDescuentosDia += costeConDescuento;
+                    
                     if (descuento != 0) {
                         JOptionPane.showMessageDialog(null,
                             """
@@ -134,6 +169,46 @@ public class App {
                     }
                 }
             } while (tipoEnvio != 0);
+             
+            if (contadorImporteSuperior200Dia != 0) {
+                contadorImporteSuperior200Semana++;
+            }
+            
+            JOptionPane.showMessageDialog(null, 
+                    """
+                    <html>
+                        <h1>Resúmen del %s</h1>
+                        <hr />
+                        <p>
+                            Total Pedidos: %d <br />
+                            Suma Importe Total: %,.2f€ <br />
+                            Suma Descuentos: %,.2f€ <br />
+                            Suma Importe Con Descuentos: %,.2f€
+                        </p>
+                        <hr />
+                    </html>
+                    """.formatted(nombreDia, totalEnviosDia, sumaImporteTotalDia, sumaDescuentosTotalDia, sumaImporteTotalDescuentosDia));
         }
+        
+        double totalPesoSemanaKilos = totalPesoSemanaGramos / 1000;
+        
+        JOptionPane.showMessageDialog(null, 
+                """
+                <html>
+                    <h1>Resúmen de la semana</h1>
+                    <hr />
+                    <p>
+                        Total Envíos: %d <br />
+                        Importes Totales: %,.2f€ <br />
+                        Descuentos Totales: %,.2f€ <br />
+                        Importe Con Descuentos Totales: %,.2f€ <br />
+                        Peso Total Semana: %,.2fKg 
+                    </p>
+                    <hr />
+                    <p>
+                        Días con Importes Totales superiores a 200€: %d
+                    </p>
+                </html>    
+                """.formatted(totalEnviosSemana, sumaImporteTotalSemana, sumaDescuentosTotalSemana, sumaImporteTotalDescuentosSemana, totalPesoSemanaKilos, contadorImporteSuperior200Semana));
     }
 }
