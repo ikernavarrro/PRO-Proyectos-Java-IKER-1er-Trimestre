@@ -15,6 +15,8 @@ public class App {
     public static void main(String[] args) {
 
         Producto producto;
+        int contadorProductos = 0;
+        double totalImporteProductos = 0.0;
 
         do {
             producto = new Producto();
@@ -134,13 +136,29 @@ public class App {
                         <hr />
                     </html>
                     """.formatted(producto.getNombre(), producto.getDescripcionCategoria(), producto.getPrecioUnitario(), producto.getStock(), producto.getPrecioStock()));
-
+            
+            contadorProductos++;
+            totalImporteProductos += producto.getPrecioStock();
+            
         } while (JOptionPane.showConfirmDialog(null,
                 """
                 <html>
                     <h1>¿Desea introducir un nuevo Producto?</h1>
                 </html>
                 """, "Producto", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
+        
+         JOptionPane.showMessageDialog(null,
+                    """
+                    <html>
+                        <h1>Resúmen De La Tienda</h1>
+                        <hr />
+                        <ul>
+                            <li>Productos: %d</li>
+                            <li>Valor Total Inventario: %,.2f€ </li>
+                        </ul>
+                        <hr />
+                    </html>
+                    """.formatted(contadorProductos, totalImporteProductos));
 
     }
 }
