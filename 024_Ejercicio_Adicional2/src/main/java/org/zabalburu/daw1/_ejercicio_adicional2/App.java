@@ -15,6 +15,11 @@ public class App {
     public static void main(String[] args) {
 
         Producto producto;
+        
+        Producto mayor = new Producto();
+        mayor.setStock(0);
+        mayor.setPrecioUnitario(0);
+        
         int contadorProductos = 0;
         double totalImporteProductos = 0.0;
         String almacenarInfoProductos = "";
@@ -140,6 +145,12 @@ public class App {
             
             contadorProductos++;
             totalImporteProductos += producto.getPrecioStock();
+            if (producto.getPrecioStock() > mayor.getPrecioStock()) {
+                mayor.setCategoria(producto.getCategoria());
+                mayor.setNombre(producto.getNombre());
+                mayor.setPrecioUnitario(producto.getPrecioUnitario());
+                mayor.setStock(producto.getStock());
+            }
             almacenarInfoProductos += """
                                   <html>
                                   <h1></h1>
@@ -181,6 +192,22 @@ public class App {
                     """.formatted(contadorProductos, totalImporteProductos));
          
          JOptionPane.showMessageDialog(null, almacenarInfoProductos);
+         
+         JOptionPane.showMessageDialog(null,
+                    """
+                    <html>
+                        <h1>Resúmen Del Producto Con Mayor Valor</h1>
+                        <hr />
+                        <ul>
+                            <li>Producto: %s</li>
+                            <li>Categoría: %s</li>
+                            <li>Precio Unitario: %,.2f€</li>
+                            <li>Ud Stock: %d</li>
+                            <li>Importe Total: %,.2f€</li>
+                        </ul>
+                        <hr />
+                    </html>
+                    """.formatted(mayor.getNombre(), mayor.getDescripcionCategoria(), mayor.getPrecioUnitario(), mayor.getStock(), mayor.getPrecioStock()));
 
     }
 }
