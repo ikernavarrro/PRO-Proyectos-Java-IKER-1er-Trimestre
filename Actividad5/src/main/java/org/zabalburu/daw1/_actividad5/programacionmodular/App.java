@@ -37,50 +37,24 @@ public class App {
                         <h1>====================</h1>
                     </html>
                     """.formatted(App.amigos, App.bote), "Un valor del 1 al 5.");
-
             /**
-             * x o caoncelar - SALIR (Si se cierra la ventana o cancela,
-             * salimos.)
+             *  x o caoncelar - SALIR (Si se cierra la ventana o se cancela,
+             *  salimos.)
+             *  1 - Añadir Amigos
+             *  2 - Nueva Aportación
+             *  3 - Pagar Ronda
+             *  4 - Quitar Amigos
+             *  5 - SALIR
              */
-            if (menu == null) {
-                menu = "5"; //Le pasamos un String que luego convertiremos en un int.
+            switch (Integer.parseInt(menu)) {
+                case 1 -> App.añadirAmigos();
+                case 2 -> App.nuevaAportacion();
+                case 3 -> App.pagarRonda(); 
+                case 4 -> App.quitarAmigos();
             }
-            //======================================
-
-            /**
-             * 1 - Añadir Amigos
-             */
-            if (Integer.parseInt(menu) == 1) {
-                App.añadirAmigos();
-            }
-            //======================================
-
-            /**
-             * 2 - Nueva Aportación
-             */
-            if (Integer.parseInt(menu) == 2) {
-                App.nuevaAportacion();
-            }
-            //======================================
-
-            /**
-             * 3 - Pagar Ronda
-             */
-            if (Integer.parseInt(menu) == 3) {
-                App.pagarRonda();
-            }
-            //======================================
-
-            /**
-             * 4 - Quitar Amigos
-             */
-            if (Integer.parseInt(menu) == 4) {
-                App.quitarAmigos();
-            }
-            //======================================
-
-            // 5 - SALIR (Si le pasamos un 5.)    \/
+           
         } while (Integer.parseInt(menu) != 5);
+        
     }
 
     //===============MÉTODOS====================
@@ -100,7 +74,7 @@ public class App {
 
         if (App.bote == 0) {
             App.bote += (añadidos * App.BOTE_PERSONA) + (App.amigos * App.BOTE_PERSONA);
-            JOptionPane.showMessageDialog(null, "<html><h1>NO HABÍA DINERO EN EL BOTE Y SE HA REALIZADO UNA NUEVA APORTACIÓN DE TODOS LOS AMIGOS</h1></html>", "Información", JOptionPane.INFORMATION_MESSAGE);   
+            JOptionPane.showMessageDialog(null, "<html><h1>NO HABÍA DINERO EN EL BOTE Y SE HA REALIZADO UNA NUEVA APORTACIÓN DE TODOS LOS AMIGOS</h1></html>", "Información", JOptionPane.INFORMATION_MESSAGE);
         } else {
             double dividirBote;
             dividirBote = App.bote / App.amigos;
@@ -179,7 +153,7 @@ public class App {
                      </html>
                      """));
 
-        if (App.bote != 0) {
+        if (App.bote != 0 && quitados <= App.amigos) {
             double dividirBote;
             dividirBote = App.bote / App.amigos;
             App.bote -= (quitados * dividirBote);
@@ -194,7 +168,9 @@ public class App {
         } else {
             JOptionPane.showMessageDialog(null, "<html><h1>NO HAY DINERO EN EL BOTE PARA REPARTIR</h1></html>", "Información de Pago", JOptionPane.INFORMATION_MESSAGE);
         }
+        if (quitados <= App.amigos) {
         App.amigos -= quitados;
+        }
     }
     //======================================
 }
