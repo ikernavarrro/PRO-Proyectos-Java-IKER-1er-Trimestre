@@ -99,7 +99,8 @@ public class App {
                      """));
 
         if (App.bote == 0) {
-            App.bote += (añadidos * App.BOTE_PERSONA);
+            App.bote += (añadidos * App.BOTE_PERSONA) + (App.amigos * App.BOTE_PERSONA);
+            JOptionPane.showMessageDialog(null, "<html><h1>NO HABÍA DINERO EN EL BOTE Y SE HA REALIZADO UNA NUEVA APORTACIÓN DE TODOS LOS AMIGOS</h1></html>", "Información", JOptionPane.INFORMATION_MESSAGE);   
         } else {
             double dividirBote;
             dividirBote = App.bote / App.amigos;
