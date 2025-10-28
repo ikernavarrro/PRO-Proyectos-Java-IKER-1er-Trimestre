@@ -15,6 +15,10 @@ public class App {
 
     public static void main(String[] args) {
         Envio nuevoEnvio;
+        Envio maximo = new Envio();
+        boolean primeraVez = true;
+        int tipoEnvioMaximo = 0;
+                
         int tipoEnvio = 0;
         int diaSemana = 0;
         
@@ -31,7 +35,6 @@ public class App {
         
         int contadorImporteSuperior200Dia = 0;
         int contadorImporteSuperior200Semana = 0;
-        
 
         for (diaSemana = 1; diaSemana <= 5; diaSemana++) {
             String nombreDia = "";
@@ -47,6 +50,7 @@ public class App {
             sumaDescuentosTotalDia = 0;
             sumaImporteTotalDescuentosDia = 0;     
             contadorImporteSuperior200Dia = 0;
+            
             do {
                 String resp = JOptionPane.showInputDialog(null,
                         """
@@ -130,6 +134,19 @@ public class App {
                     sumaDescuentosTotalDia += descuento;
                     sumaImporteTotalDescuentosDia += costeConDescuento;
                     
+                    if (primeraVez == true) {
+                        primeraVez = false;
+                        maximo.setDestinatario(nuevoEnvio.getDestinatario());
+                        maximo.setPesoEnGramos(nuevoEnvio.getPesoEnGramos());
+                        maximo.setRemitente(nuevoEnvio.getRemitente());
+                        tipoEnvioMaximo = tipoEnvio;
+                    } else if (nuevoEnvio.getCoste(tipoEnvio) > maximo.getCoste(tipoEnvioMaximo)) {
+                        maximo.setDestinatario(nuevoEnvio.getDestinatario());
+                        maximo.setPesoEnGramos(nuevoEnvio.getPesoEnGramos());
+                        maximo.setRemitente(nuevoEnvio.getRemitente());
+                        tipoEnvioMaximo = tipoEnvio;
+                    }
+                    
                     if (descuento != 0) {
                         JOptionPane.showMessageDialog(null,
                             """
@@ -208,7 +225,15 @@ public class App {
                     <p>
                         Días con Importes Totales superiores a 200€: %d
                     </p>
+                    <hr />
+                    <p>
+                        ENVÍO CON <b>MAYOR</b> COSTE DE LA SEMANA: <br />
+                        Remitente: %s <br />
+                        Destinatario: %s <br />
+                        Importe Total:  %,.2f€
+                    </p>
+                    <hr />
                 </html>    
-                """.formatted(totalEnviosSemana, sumaImporteTotalSemana, sumaDescuentosTotalSemana, sumaImporteTotalDescuentosSemana, totalPesoSemanaKilos, contadorImporteSuperior200Semana));
+                """.formatted(totalEnviosSemana, sumaImporteTotalSemana, sumaDescuentosTotalSemana, sumaImporteTotalDescuentosSemana, totalPesoSemanaKilos, contadorImporteSuperior200Semana, maximo.getRemitente(), maximo.getDestinatario(), maximo.getCoste(tipoEnvioMaximo)));
     }
 }
