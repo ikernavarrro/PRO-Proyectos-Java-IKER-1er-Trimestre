@@ -17,6 +17,7 @@ public class App {
         Producto producto;
         int contadorProductos = 0;
         double totalImporteProductos = 0.0;
+        String almacenarInfoProductos = "";
 
         do {
             producto = new Producto();
@@ -139,6 +140,25 @@ public class App {
             
             contadorProductos++;
             totalImporteProductos += producto.getPrecioStock();
+            almacenarInfoProductos += """
+                                  <html>
+                                  <h1></h1>
+                                  <table border="2" bgcolor="white">
+                                    <tr border="1" bgcolor="white" align="center">
+                                        <th>Producto</th>
+                                        <th>Categoría</th>
+                                        <th>Precio Unitario</th>
+                                        <th>Ud_Stock</th>
+                                        <th>Importe_Total</th>      
+                                    </tr border="1" bgcolor="white" align="center">
+                                        <td>%s</td>
+                                        <td>%s</td> 
+                                        <td>%,.2f€</td>
+                                        <td>%d</td> 
+                                        <td>%,.2f€</td>
+                                  </table>
+                                  </html>  
+                                  """.formatted(producto.getNombre(), producto.getDescripcionCategoria(), producto.getPrecioUnitario(), producto.getStock(), producto.getPrecioStock());
             
         } while (JOptionPane.showConfirmDialog(null,
                 """
@@ -159,6 +179,8 @@ public class App {
                         <hr />
                     </html>
                     """.formatted(contadorProductos, totalImporteProductos));
+         
+         JOptionPane.showMessageDialog(null, almacenarInfoProductos);
 
     }
 }
