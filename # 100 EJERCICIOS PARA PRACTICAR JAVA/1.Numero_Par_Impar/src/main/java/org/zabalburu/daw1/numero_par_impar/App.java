@@ -15,7 +15,8 @@ public class App {
     public static void main(String[] args) {
       /**
        * Esta aplicación pide un número y devuelve si es par o impar.
-       *
+       * 
+       * 
        */
          int num; // Declaramos un entero donde almacenaremos el número pedido.
          num = App.pedirNumero(); //Hemos creado un método para dejar más limpio el main.
