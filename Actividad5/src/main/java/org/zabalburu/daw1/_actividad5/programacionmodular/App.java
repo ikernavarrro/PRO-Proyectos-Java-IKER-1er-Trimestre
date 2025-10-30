@@ -46,6 +46,9 @@ public class App {
              *  4 - Quitar Amigos
              *  5 - SALIR
              */
+            if (menu == null){
+                menu = "5"; //x o cancelar
+            }
             switch (Integer.parseInt(menu)) {
                 case 1 -> App.añadirAmigos();
                 case 2 -> App.nuevaAportacion();
