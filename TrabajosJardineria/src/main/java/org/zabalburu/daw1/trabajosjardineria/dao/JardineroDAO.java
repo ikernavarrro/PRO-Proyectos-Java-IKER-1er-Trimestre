@@ -1,0 +1,18 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package org.zabalburu.daw1.trabajosjardineria.dao;
+
+import org.zabalburu.daw1.trabajosjardineria.modelo.Jardinero;
+
+/**
+ *
+ * @author Iker Navarro Pérez
+ */
+public interface JardineroDAO {
+    public Jardinero addJardinero(Jardinero nuevo);
+    public void deleteJardinero(Jardinero eliminar);
+    public void deleteJardinero(Integer id);
+    public void modifyJardinero(Jardinero modificar);
+}
