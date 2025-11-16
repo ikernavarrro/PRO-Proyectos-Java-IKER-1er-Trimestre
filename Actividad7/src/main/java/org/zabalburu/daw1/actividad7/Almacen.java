@@ -154,19 +154,33 @@ public class Almacen {
         } while (menu != 0);
         String datosAlmacen = "";
         for (Producto p : producto) {
-            datosAlmacen += "%9s         %17d                 %,4.2f    %18d                  %,4.2f     <br />".formatted(p.getNombre(), p.getUnidadesAlmacen(), p.getPrecio(), p.getUnidadesVendidas(), p.getVentasProducto());
+            datosAlmacen += 
+                    """
+                    <tr>
+                        <td>%s</td> 
+                        <td>%d</td> 
+                        <td>%,.2f</td> 
+                        <td>%d</td> 
+                        <td>%,.2f</td>
+                    </tr>
+                    """.formatted(p.getNombre(), p.getUnidadesAlmacen(), p.getPrecio(), p.getUnidadesVendidas(), p.getVentasProducto());
+            
         }
+        
         JOptionPane.showMessageDialog(null, 
                 """
                 <html>
                     <h1>RESÚMEN ALMACÉN</h1>
-                    <hr />
-                    <p>
-                        Producto   Unidades Almacen   Precio   Unidades Vendidas   Ventas <br />
-                        ========   ================   ======   =================   ====== <br />
-                        %s 
-                    </p>
-                    <hr />
+                    <table border="1">
+                        <tr>
+                            <td>Producto</td>
+                            <td>Unidades Almacen</td>
+                            <td>Precio</td>   
+                            <td>Unidades Vendidas</td>   
+                            <td>Ventas</td>
+                        </tr>    
+                        %s        
+                    </table>
                 </html>
                 """.formatted(datosAlmacen));
     }
