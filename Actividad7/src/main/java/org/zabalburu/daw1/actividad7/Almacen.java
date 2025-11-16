@@ -154,7 +154,7 @@ public class Almacen {
         } while (menu != 0);
         String datosAlmacen = "";
         for (Producto p : producto) {
-            datosAlmacen += "%9s         %17d                 %,.2f    %18d                  %,.2f     <br />".formatted(p.getNombre(), p.getUnidadesAlmacen(), p.getPrecio(), p.getUnidadesVendidas(), p.getVentasProducto());
+            datosAlmacen += "%9s         %17d                 %,4.2f    %18d                  %,4.2f     <br />".formatted(p.getNombre(), p.getUnidadesAlmacen(), p.getPrecio(), p.getUnidadesVendidas(), p.getVentasProducto());
         }
         JOptionPane.showMessageDialog(null, 
                 """
