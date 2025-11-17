@@ -48,7 +48,6 @@ public class JardineroList implements JardineroDAO {
             // Sustituimos el jardinero.
             jardineros.set(pos, modificar);
         }
-        
     }
 
     @Override

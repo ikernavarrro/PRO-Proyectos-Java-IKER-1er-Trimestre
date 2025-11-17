@@ -12,6 +12,6 @@ import org.zabalburu.daw1.trabajosjardineria.modelo.TipoTrabajo;
  * @author Iker Navarro Pérez
  */
 public interface TipoTrabajoDAO {
-    TipoTrabajo getTipoTrabajo(Integer id);
-    List<TipoTrabajo> getTiposTrabajo();
+    public TipoTrabajo getTipoTrabajo(Integer id);
+    public List<TipoTrabajo> getTiposTrabajo();
 }
