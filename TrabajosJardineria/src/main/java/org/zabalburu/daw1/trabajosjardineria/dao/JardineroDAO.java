@@ -4,6 +4,7 @@
  */
 package org.zabalburu.daw1.trabajosjardineria.dao;
 
+import java.util.List;
 import org.zabalburu.daw1.trabajosjardineria.modelo.Jardinero;
 
 /**
@@ -15,4 +16,7 @@ public interface JardineroDAO {
     public void deleteJardinero(Jardinero eliminar);
     public void deleteJardinero(Integer id);
     public void modifyJardinero(Jardinero modificar);
+    public Jardinero getJardinero (Integer id);
+    public List<Jardinero> getJardineros();
+    public Jardinero getJardinero(String dni);
 }
