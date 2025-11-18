@@ -35,7 +35,7 @@ public class Jardinero {
         this.apellidos = apellidos;
     }
     
-    public void asignarTrabajo(Trabajo trabajo) {
+    /*public void asignarTrabajo(Trabajo trabajo) {
         this.trabajos.add(trabajo);
         trabajo.setJardinero(this);
     }
@@ -43,7 +43,7 @@ public class Jardinero {
     public void desasignarTrabajo(Trabajo trabajo) {
         this.trabajos.remove(trabajo);
         trabajo.setJardinero(null);
-    }
+    }*/
 
     @Override
     public String toString() {

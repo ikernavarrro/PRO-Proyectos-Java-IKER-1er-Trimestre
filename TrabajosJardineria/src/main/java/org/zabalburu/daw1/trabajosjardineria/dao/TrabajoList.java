@@ -54,13 +54,15 @@ public class TrabajoList implements TrabajoDAO {
     }
 
     @Override
-    public void deleteTrabajo(Trabajo eliminar) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void deleteTrabajo(Integer id) {
+        Trabajo t = new Trabajo();
+        t.setId(id);
+        trabajos.remove(t);
     }
 
     @Override
-    public void deleteTrabajo(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void deleteTrabajo(Trabajo eliminar) {
+        trabajos.remove(eliminar);
     }
     
 }
