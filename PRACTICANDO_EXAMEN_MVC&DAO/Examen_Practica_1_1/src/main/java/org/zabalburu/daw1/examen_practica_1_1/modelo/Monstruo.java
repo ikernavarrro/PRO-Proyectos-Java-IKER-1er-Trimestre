@@ -11,11 +11,12 @@ import java.util.Objects;
  * @author Iker Navarro Pérez
  */
 public class Monstruo {
-   public String nombre;
-   public Integer vida;
-   public Integer ataque;
-   public Integer dificultad;
-   public Tesoro tesoro;
+
+    public String nombre;
+    public Integer vida;
+    public Integer ataque;
+    public Integer dificultad;
+    public Tesoro tesoro;
 
     public Monstruo(String nombre, Integer vida, Integer ataque, Integer dificultad, Tesoro tesoro) {
         this.nombre = nombre;
@@ -91,8 +92,5 @@ public class Monstruo {
     public String toString() {
         return "Monstruo{" + "nombre=" + nombre + ", vida=" + vida + ", ataque=" + ataque + ", dificultad=" + dificultad + ", tesoro=" + tesoro + '}';
     }
-    
-    
-   
-   
+
 }

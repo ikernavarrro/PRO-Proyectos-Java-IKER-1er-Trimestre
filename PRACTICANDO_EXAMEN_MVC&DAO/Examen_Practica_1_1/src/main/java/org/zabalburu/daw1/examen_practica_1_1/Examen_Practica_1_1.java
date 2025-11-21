@@ -1,8 +1,9 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package org.zabalburu.daw1.examen_practica_1_1;
+
+import org.zabalburu.daw1.examen_practica_1_1.controlador.DungeonCrawlerControlador;
 
 /**
  *
@@ -11,6 +12,7 @@ package org.zabalburu.daw1.examen_practica_1_1;
 public class Examen_Practica_1_1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        DungeonCrawlerControlador dc = new DungeonCrawlerControlador();
+        dc.iniciar();
     }
 }

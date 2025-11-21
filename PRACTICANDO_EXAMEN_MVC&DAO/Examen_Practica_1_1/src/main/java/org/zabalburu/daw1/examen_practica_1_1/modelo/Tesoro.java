@@ -11,7 +11,8 @@ import java.util.Objects;
  * @author Iker Navarro Pérez
  */
 public class Tesoro {
-    public String nombre; 
+
+    public String nombre;
     public Integer valor;
     public String rareza;
 
@@ -71,6 +72,5 @@ public class Tesoro {
     public String toString() {
         return "Tesoro{" + "nombre=" + nombre + ", valor=" + valor + ", rareza=" + rareza + '}';
     }
-    
-    
+
 }

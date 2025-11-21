@@ -13,6 +13,7 @@ import java.util.Objects;
  * @author Iker Navarro Pérez
  */
 public class Mazmorra {
+
     public String nombre;
     public Integer nivelDificultad;
     public List<Monstruo> monstruos;
@@ -38,15 +39,15 @@ public class Mazmorra {
     public void setNivelDificultad(Integer nivelDificultad) {
         this.nivelDificultad = nivelDificultad;
     }
-    
+
     public List<Monstruo> getMonstruos() {
         return monstruos;
     }
-    
+
     public void addMonstruo(Monstruo agregar) {
         monstruos.add(agregar);
     }
-    
+
     public void removeMonstruo(Monstruo eliminar) {
         monstruos.remove(eliminar);
     }
@@ -77,7 +78,5 @@ public class Mazmorra {
     public String toString() {
         return "Mazmorra{" + "nombre=" + nombre + ", nivelDificultad=" + nivelDificultad + ", monstruos=" + monstruos + '}';
     }
-    
-    
-    
+
 }

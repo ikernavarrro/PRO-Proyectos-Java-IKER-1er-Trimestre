@@ -12,9 +12,14 @@ import org.zabalburu.daw1.examen_practica_1_1.modelo.Mazmorra;
  * @author Iker Navarro Pérez
  */
 public interface MazmorraDAO {
+
     public Mazmorra addMazmorra(Mazmorra mazmorra);
+
     public Mazmorra getNombre(String nombre);
+
     public List<Mazmorra> getMazmorras();
+
     public void modifyMazmorra(Mazmorra mazmorra);
+
     public void removeMazmorra(Mazmorra mazmorra);
 }

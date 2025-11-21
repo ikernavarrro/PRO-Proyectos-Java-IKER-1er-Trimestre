@@ -12,9 +12,14 @@ import org.zabalburu.daw1.examen_practica_1_1.modelo.Monstruo;
  * @author Iker Navarro Pérez
  */
 public interface MonstruoDAO {
+
     public Monstruo addMonstruo(Monstruo monstruo);
+
     public Monstruo getNombre(String nombre);
+
     public List<Monstruo> getMonstruos();
+
     public void modifyMonstruo(Monstruo monstruo);
+
     public void removeMonstruo(Monstruo monstruo);
 }

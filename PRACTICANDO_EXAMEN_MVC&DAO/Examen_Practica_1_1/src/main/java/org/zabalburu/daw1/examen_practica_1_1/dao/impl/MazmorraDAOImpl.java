@@ -30,14 +30,14 @@ public class MazmorraDAOImpl implements MazmorraDAO {
     @Override
     public Mazmorra getNombre(String nombre) {
         int i;
-        for (i = 0; i < mazmorras.size() && !mazmorras.get(i).getNombre().equalsIgnoreCase(nombre); i++); 
-            if (i < mazmorras.size()) {
-                return mazmorras.get(i);
-            } else {
-                return null;
-            }
+        for (i = 0; i < mazmorras.size() && !mazmorras.get(i).getNombre().equalsIgnoreCase(nombre); i++);
+        if (i < mazmorras.size()) {
+            return mazmorras.get(i);
+        } else {
+            return null;
         }
-    
+    }
+
     @Override
     public List<Mazmorra> getMazmorras() {
         return mazmorras;

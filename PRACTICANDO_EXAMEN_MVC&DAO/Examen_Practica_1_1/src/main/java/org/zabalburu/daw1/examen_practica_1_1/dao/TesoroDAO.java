@@ -12,9 +12,14 @@ import org.zabalburu.daw1.examen_practica_1_1.modelo.Tesoro;
  * @author Iker Navarro Pérez
  */
 public interface TesoroDAO {
+
     public Tesoro addTesoro(Tesoro tesoro);
+
     public Tesoro getNombre(String nombre);
+
     public List<Tesoro> getTesoros();
+
     public void modifyTesoro(Tesoro tesoro);
+
     public void removeTesoro(Tesoro tesoro);
 }

@@ -14,13 +14,13 @@ import org.zabalburu.daw1.examen_practica_1_1.modelo.Monstruo;
  * @author Iker Navarro Pérez
  */
 public class MonstruoDAOImpl implements MonstruoDAO {
-    
+
     private List<Monstruo> monstruos;
 
     public MonstruoDAOImpl() {
         monstruos = new ArrayList<>();
     }
-    
+
     @Override
     public Monstruo addMonstruo(Monstruo monstruo) {
         monstruos.add(monstruo);
@@ -55,5 +55,5 @@ public class MonstruoDAOImpl implements MonstruoDAO {
     public void removeMonstruo(Monstruo monstruo) {
         monstruos.remove(monstruo);
     }
-    
+
 }

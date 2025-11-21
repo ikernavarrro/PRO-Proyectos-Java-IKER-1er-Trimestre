@@ -14,7 +14,7 @@ import org.zabalburu.daw1.examen_practica_1_1.modelo.Tesoro;
  * @author Iker Navarro Pérez
  */
 public class TesoroDAOImpl implements TesoroDAO {
-    
+
     private List<Tesoro> tesoros;
 
     public TesoroDAOImpl() {
@@ -55,5 +55,5 @@ public class TesoroDAOImpl implements TesoroDAO {
     public void removeTesoro(Tesoro tesoro) {
         tesoros.remove(tesoro);
     }
-    
+
 }

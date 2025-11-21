@@ -33,53 +33,75 @@ public class DungeonCrawlerServicio {
 
     //=======Mazmorra=========
     public void crearMazmorra(String nombre, Integer dificultad) {
-
+        Mazmorra m = new Mazmorra(nombre, dificultad);
+        mazmorraDAO.addMazmorra(m);
     }
 
     public Mazmorra obtenerMazmorra(String nombre) {
-
+        return mazmorraDAO.getNombre(nombre);
     }
 
     public List<Mazmorra> listarMazmorras() {
-
+        return mazmorraDAO.getMazmorras();
     }
 
     public void actualizarMazmorra(Mazmorra mazmorra) {
-
+        mazmorraDAO.modifyMazmorra(mazmorra);
     }
 
     public void eliminarMazmorra(String nombre) {
-
+        Mazmorra m = mazmorraDAO.getNombre(nombre);
+        if (m != null) {
+            mazmorraDAO.removeMazmorra(m);
+        }
     }
 
     //=======Monstruos========
     public void crearMonstruo(String nombre, Integer vida, Integer ataque, Integer dificultad, Tesoro tesoro) {
-
+        Monstruo m = new Monstruo(nombre, vida, ataque, dificultad, tesoro);
+        monstruoDAO.addMonstruo(m);
     }
 
     public Monstruo obtenerMonstruo(String nombre) {
+        return monstruoDAO.getNombre(nombre);
+    }
 
+    public List<Monstruo> listarMonstruos() {
+        return monstruoDAO.getMonstruos();
     }
-    
-    public List<Monstruo> listarMonstruo() {
-    
-    }
-    
+
     public void agregarMonstruoMazmorra(String nombreMazmorra, Monstruo monstruo) {
-    
+        Mazmorra m = mazmorraDAO.getNombre(nombreMazmorra);
+        if (m != null) {
+            m.addMonstruo(monstruo);
+        }
+    }
+
+    public void eliminarMonstruo(String nombre) {
+        Monstruo m = monstruoDAO.getNombre(nombre);
+        if (m != null) {
+            monstruoDAO.removeMonstruo(m);
+        }
     }
 
     //=======Tesoros==========
-    
     public void crearTesoro(String nombre, Integer valor, String rareza) {
-        
+        Tesoro t = new Tesoro(nombre, valor, rareza);
+        tesoroDAO.addTesoro(t);
     }
-    
+
     public Tesoro obtenerTesoro(String nombre) {
-    
+        return tesoroDAO.getNombre(nombre);
     }
-    
-    public List<Tesoro> listarTesoros(){
-    
+
+    public List<Tesoro> listarTesoros() {
+        return tesoroDAO.getTesoros();
+    }
+
+    public void eliminarTesoro(String nombre) {
+        Tesoro t = tesoroDAO.getNombre(nombre);
+        if (t != null) {
+            tesoroDAO.removeTesoro(t);
+        }
     }
 }
