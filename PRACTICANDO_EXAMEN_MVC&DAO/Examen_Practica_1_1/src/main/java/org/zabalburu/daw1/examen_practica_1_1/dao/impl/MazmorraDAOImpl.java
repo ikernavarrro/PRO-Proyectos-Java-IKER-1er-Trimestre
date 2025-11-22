@@ -55,5 +55,4 @@ public class MazmorraDAOImpl implements MazmorraDAO {
     public void removeMazmorra(Mazmorra mazmorra) {
         mazmorras.remove(mazmorra);
     }
-
 }
