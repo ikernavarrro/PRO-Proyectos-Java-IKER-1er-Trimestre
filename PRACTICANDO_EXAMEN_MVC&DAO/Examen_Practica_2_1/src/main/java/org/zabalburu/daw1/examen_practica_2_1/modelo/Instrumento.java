@@ -13,7 +13,7 @@ import java.util.Objects;
 public class Instrumento {
 
     private static int contadorInstrumentos;
-    private static final String[] FAMILIAS = {"Viento", "Cuerda", "Percusión", "Teclado"};
+    private static final String[] FAMILIAS = {"Viento", "Cuerda", "Percusion", "Teclado"};
     private Integer id;
     private String nombre;
     private String familia;

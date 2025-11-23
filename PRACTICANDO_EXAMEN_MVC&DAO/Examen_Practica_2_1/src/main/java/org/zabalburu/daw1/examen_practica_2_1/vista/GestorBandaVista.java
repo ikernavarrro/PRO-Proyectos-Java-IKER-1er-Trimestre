@@ -5,11 +5,13 @@
 package org.zabalburu.daw1.examen_practica_2_1.vista;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.zabalburu.daw1.examen_practica_2_1.modelo.Banda;
+import org.zabalburu.daw1.examen_practica_2_1.modelo.Concierto;
 import org.zabalburu.daw1.examen_practica_2_1.modelo.Instrumento;
 import org.zabalburu.daw1.examen_practica_2_1.modelo.Musico;
 
@@ -28,36 +30,95 @@ public class GestorBandaVista {
             opc = pedirEntero(
                     """
                 <html>
-                    <h1>💻MENÚ PRINCIPAL - Gestor Bandas💻</h1>
+                    <h1>💻MENÚ PRINCIPAL - Gestor Bandas</h1>
                     <hr />
-                    <table border="2">
+                    <table border="1" width="100%">
+                        <tr align="center">
+                            <td colspan="2">Desarrollado por Iker Navarro Pérez</td>
+                        </tr>
+                        <tr align="center">
+                            <td>1</td>
+                            <td>Gestionar Conciertos▶️</td>
+                        </tr>
+                        <tr align="center">
+                            <td>2</td>
+                            <td>Gestionar Bandas🥁</td>
+                        </tr>
+                        <tr align="center">
+                            <td>3</td>
+                            <td>Gestionar Músicos🎵</td>
+                        </tr>
+                        <tr align="center">
+                            <td>4</td>
+                            <td>Gestionar Instrumentos🎺</td>
+                        </tr>
+                    </table>
+                    <hr />
+                    <p>
+                        Introduzca una Opción del <big>[1 al 4]</big>
+                    </p>
+                </html>
+                """);
+        } while (opc < 0 || opc > 4);
+        return opc;
+    }
+    
+    public int mostrarMenuConciertos() {
+        int opc = 0;
+        do {
+            opc = pedirEntero(
+                    """
+                <html>
+                    <h1>💻MENÚ BANDAS - Gestor Conciertos💻</h1>
+                    <hr />
+                    <table border="1" width="100%">
                         <caption>Desarrollado por Iker Navarro Pérez</caption>
                         <tr>
                             <td colspan="2">ELIJA UNA OPCIÓN</td>
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>Gestionar Bandas🥁</td>
+                            <td>Crear Concierto?</td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Gestionar Músicos🎵</td>
+                            <td>Buscar Concierto</td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Gestionar Instrumentos🎺</td>
+                            <td>Listar Conciertos</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Modificar Concierto</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Eliminar Concierto</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Asignar Banda</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Desasignar Banda</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Vender Entradas</td>
                         </tr>
                     </table>
                     <hr />
                     <p>
-                        Introduzca una Opción del <big>[1 al 3]</big>
+                        Introduzca una Opción del <big>[1 al 8]</big>
                     </p>
                 </html>
                 """);
-        } while (opc < 0 || opc > 3);
+        } while (opc < 0 || opc > 8);
         return opc;
     }
-
+    
     public int mostrarMenuBandas() {
         int opc = 0;
         do {
@@ -66,7 +127,7 @@ public class GestorBandaVista {
                 <html>
                     <h1>💻MENÚ BANDAS - Gestor Bandas💻</h1>
                     <hr />
-                    <table border="2">
+                    <table border="1" width="100%">
                         <caption>Desarrollado por Iker Navarro Pérez</caption>
                         <tr>
                             <td colspan="2">ELIJA UNA OPCIÓN</td>
@@ -99,14 +160,22 @@ public class GestorBandaVista {
                             <td>7</td>
                             <td>Desasignar Músico</td>
                         </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Asignar Coordinador</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Desasignar Coordinador</td>
+                        </tr>
                     </table>
                     <hr />
                     <p>
-                        Introduzca una Opción del <big>[1 al 7]</big>
+                        Introduzca una Opción del <big>[1 al 9]</big>
                     </p>
                 </html>
                 """);
-        } while (opc < 0 || opc > 7);
+        } while (opc < 0 || opc > 9);
         return opc;
     }
 
@@ -118,7 +187,7 @@ public class GestorBandaVista {
                 <html>
                     <h1>💻MENÚ Músicos - Gestor Bandas💻</h1>
                     <hr />
-                    <table border="2">
+                    <table border="1" width="100%">
                         <caption>Desarrollado por Iker Navarro Pérez</caption>
                         <tr>
                             <td colspan="2">ELIJA UNA OPCIÓN</td>
@@ -170,7 +239,7 @@ public class GestorBandaVista {
                 <html>
                     <h1>💻MENÚ Instrumentos - Gestor Bandas💻</h1>
                     <hr />
-                    <table border="2">
+                    <table border="1" width="100%">
                         <caption>Desarrollado por Iker Navarro Pérez</caption>
                         <tr>
                             <td colspan="2">ELIJA UNA OPCIÓN</td>
@@ -207,20 +276,65 @@ public class GestorBandaVista {
     }
 
     //==========2.MOSTRAR-OBJETOS=============
+    
+    public void mostrarConcierto (Concierto concierto) {
+        String mensaje = "";
+        if (concierto != null) {
+            String banda = (concierto.getIdBanda() != null)? concierto.getIdBanda().toString() : "No Hay Banda Asignada";
+            mensaje
+                    = """
+        <html>
+            <h1>Información de Concierto</h1>
+            <hr />
+            <p> 
+                ID: %d
+                NOMBRE: %s
+                DESCRIPCION: %s
+                FECHA INICIO: %s
+                DURACIÓN: %s Horas
+                FECHA FIN: %s
+                PRECIO ENTRADA: %,.2f€
+                ENTRADAS DISPONIBLES: %d
+                ENTRADAS VENDIDAS: %d
+                RECAUDACIÓN TOTAL: %,.2f€
+                ID BANDA: %d
+            </p>
+            <hr />            
+        </html>
+        """.formatted(
+                concierto.getId(),
+                concierto.getNombre(),
+                concierto.getDescripcion(),
+                concierto.getFechaYHoraInicio(),
+                concierto.getDuracionEnHoras(),
+                concierto.getFechaYHoraFin(),
+                concierto.getPrecioEntrada(),
+                concierto.getEntradasDisponibles(),
+                concierto.getEntradasVendidas(),
+                concierto.getRecaudacionTotal(),
+                banda);
+            mostrarMensaje(mensaje);
+        } else {
+            mostrarError("¡NO SE HA ENCONTRADO LA BANDA!");
+        }
+    }
+    
     public void mostrarBanda(Banda banda) {
         String mensaje = "";
         if (banda != null) {
+            String coordinador = (banda.getCoordinador()!= null)? banda.getCoordinador().toString() : "No Hay Coordinador Asignado";
             String musicos = (banda.getMusicos() != null)? banda.getMusicos().toString() : "No Hay Músicos";
             mensaje
                     = """
         <html>
             <h1>Información de Banda</h1>
-            <table>
+            <table border="1">
                 <tr>
                     <td>ID</td>
                     <td>NOMBRE</td>
                     <td>GÉNERO</td>
                     <td>FECHA CREACIÓN</td>
+                    <td>COORDINADOR</td>  
                     <td>MÚSICOS</td>
                 </tr>
                 <tr>
@@ -229,10 +343,17 @@ public class GestorBandaVista {
                     <td>%s</td>
                     <td>%s</td>
                     <td>%s</td>
+                    <td>%s</td>  
                 </tr>
             </table>    
         </html>
-        """.formatted(banda.getId(), banda.getNombre(), banda.getGenero(), banda.getFechaCreacion().toString(), musicos);
+        """.formatted(
+                banda.getId(),
+                banda.getNombre(),
+                banda.getGenero(),
+                banda.getFechaCreacion().toString(),
+                coordinador,
+                musicos);
             mostrarMensaje(mensaje);
         } else {
             mostrarError("¡NO SE HA ENCONTRADO LA BANDA!");
@@ -247,24 +368,29 @@ public class GestorBandaVista {
                     = """
                     <html>
                         <h1>Información de Músico</h1>
-                        <table>
+                        <table border="1">
                             <tr>
                                 <td>ID</td>
                                 <td>NOMBRE</td>
                                 <td>EDAD</td>
-                                <td>FECHA INCORPORACIÓN</td>
+                                <td>AÑOS EXPERIENCIA</td>
                                 <td>INSTRUMENTO</td>
                             </tr>
                             <tr>
                                 <td>%d</td>
                                 <td>%s</td>
                                 <td>%d</td>
-                                <td>%s</td>
+                                <td>%d</td>
                                 <td>%s</td>
                             </tr>
                         </table>    
                     </html>
-                  """.formatted(musico.getId(), musico.getNombre(), musico.getEdad(), musico.getFechaIncorporacion().toString(), instrumento);
+                  """.formatted(
+                          musico.getId(),
+                          musico.getNombre(),
+                          musico.getEdad(),
+                          musico.getAñosExperiencia(),
+                          instrumento);
             mostrarMensaje(mensaje);
         } else {
             mostrarError("¡NO SE HA ENCONTRADO EL MÚSICO!");
@@ -293,7 +419,11 @@ public class GestorBandaVista {
                 </tr>
             </table>    
         </html>
-        """.formatted(instrumento.getId(), instrumento.getNombre(), instrumento.getFamilia(), instrumento.getAñoFabricacion());
+        """.formatted(
+                instrumento.getId(),
+                instrumento.getNombre(),
+                instrumento.getFamilia(),
+                instrumento.getAñoFabricacion());
             mostrarMensaje(mensaje);
         } else {
             mostrarError("¡NO SE HA ENCONTRADO EL INSTRUMENTO!");
@@ -341,7 +471,7 @@ public class GestorBandaVista {
     }
 
     public int pedirEntero(String mensaje) {
-        String resp = JOptionPane.showInputDialog(null, mensaje);
+        String resp = pedirCadena(mensaje);
         int entero = 0;
         boolean ok = false;
         do {
@@ -352,10 +482,29 @@ public class GestorBandaVista {
                 ok = true;
             } catch (NumberFormatException ex) {
                 mostrarError("¡INTRODUZCA UN NÚMERO SIN DECIMALES!");
-                resp = JOptionPane.showInputDialog(null, mensaje);
+                resp = pedirCadena(mensaje);
             }
         } while (!ok);
         return entero;
+    }
+    
+    public double pedirDouble(String mensaje) {
+        NumberFormat nf = NumberFormat.getInstance();
+        String resp = pedirCadena(mensaje);
+        Number n = 0;
+        boolean ok = false;
+        do {
+            try {
+                if (resp != null) {
+                    n = nf.parse(resp);
+                }
+                ok = true;
+            } catch (ParseException ex) {
+                mostrarError("¡INTRODUZCA UN NÚMERO VÁLIDO!");
+                resp = pedirCadena(mensaje);
+            }
+        } while (!ok);
+        return n.doubleValue();
     }
 
     public Date pedirFecha(String mensaje) {

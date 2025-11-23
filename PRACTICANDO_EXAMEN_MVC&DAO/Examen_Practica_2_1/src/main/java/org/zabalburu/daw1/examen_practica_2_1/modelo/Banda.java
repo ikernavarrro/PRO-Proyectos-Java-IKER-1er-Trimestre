@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Banda {
 
     private static int contadorBandas;
-    private static final String[] GENEROS = {"Rock", "Pop", "Jazz", "Clásico", "Metal", "Reggaeton"};
+    private static final String[] GENEROS = {"Rock", "Pop", "Jazz", "Clasico", "Metal", "Reggaeton"};
     private Integer id;
     private String nombre;
     private String genero;
@@ -130,8 +130,12 @@ public class Banda {
         return coordinador;
     }
 
-    public void setCoordinador(Musico coordinador) {
+    public void assignCoordinador(Musico coordinador) {
         this.coordinador = coordinador;
+    }
+    
+    public void unAssignCoordinador(Musico coordinador) {
+        this.coordinador = null;
     }
     
 }

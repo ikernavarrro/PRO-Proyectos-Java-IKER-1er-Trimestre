@@ -6,6 +6,7 @@ package org.zabalburu.daw1.examen_practica_2_1.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import org.zabalburu.daw1.examen_practica_2_1.dao.InstrumentoDAO;
 import org.zabalburu.daw1.examen_practica_2_1.modelo.Instrumento;
 
@@ -47,6 +48,8 @@ public class InstrumentoDAOImpl implements InstrumentoDAO {
         int pos = instrumentos.indexOf(modificar);
         if (pos != -1) {
             instrumentos.set(pos, modificar);
+        } else {
+            throw new NoSuchElementException("NO se ha encontrado el INSTRUMENTO");
         }
     }
 
@@ -55,6 +58,9 @@ public class InstrumentoDAOImpl implements InstrumentoDAO {
         Instrumento ins = getInstrumento(id);
         if (ins != null) {
             instrumentos.remove(ins);
+        } else {
+            throw new IllegalArgumentException("ID_INSTRUMENTO NO Encontrado " + "(" + id + ")");
         }
     }
+    
 }

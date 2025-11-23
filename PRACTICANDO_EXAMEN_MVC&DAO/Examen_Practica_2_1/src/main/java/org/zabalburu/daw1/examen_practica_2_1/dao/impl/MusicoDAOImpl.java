@@ -6,6 +6,8 @@ package org.zabalburu.daw1.examen_practica_2_1.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import org.zabalburu.daw1.examen_practica_2_1.dao.InstrumentoDAO;
 import org.zabalburu.daw1.examen_practica_2_1.dao.MusicoDAO;
 import org.zabalburu.daw1.examen_practica_2_1.modelo.Instrumento;
 import org.zabalburu.daw1.examen_practica_2_1.modelo.Musico;
@@ -17,9 +19,11 @@ import org.zabalburu.daw1.examen_practica_2_1.modelo.Musico;
 public class MusicoDAOImpl implements MusicoDAO {
 
     private List<Musico> musicos;
+    private InstrumentoDAO instrumentoDAO; // Instrumento Asignado
 
-    public MusicoDAOImpl() {
+    public MusicoDAOImpl(InstrumentoDAO instrumentoDAO) {
         this.musicos = new ArrayList<>();
+        this.instrumentoDAO = instrumentoDAO;
     }
 
     @Override
@@ -48,6 +52,8 @@ public class MusicoDAOImpl implements MusicoDAO {
         int pos = musicos.indexOf(modificar);
         if (pos != -1) {
             musicos.set(pos, modificar);
+        } else {
+            throw new NoSuchElementException("NO se ha encontrado el MÚSICO");
         }
     }
 
@@ -56,14 +62,19 @@ public class MusicoDAOImpl implements MusicoDAO {
         Musico m = getMusico(id);
         if (m != null) {
             musicos.remove(m);
+        } else {
+            throw new IllegalArgumentException("ID_MÚSICO NO Encontrado " + "(" + id + ")");
         }
     }
 
     @Override
-    public void assignInstrumento(int idMusico, Instrumento instrumentoAsignar) {
+    public void assignInstrumento(int idMusico, int idInstrumento) {
         Musico m = getMusico(idMusico);
-        if (m != null) {
-            m.setInstrumento(instrumentoAsignar);
+        Instrumento i = instrumentoDAO.getInstrumento(idInstrumento);
+        if (m != null && i != null) {
+            m.setInstrumento(i);
+        } else {
+            throw new IllegalArgumentException("MÚSICO o INSTRUMENTO NO Encontrado");
         }
     }
 
@@ -72,7 +83,9 @@ public class MusicoDAOImpl implements MusicoDAO {
         Musico m = getMusico(idMusico);
         if (m != null) {
             m.setInstrumento(null);
+        } else {
+            throw new IllegalArgumentException("ID_MÚSICO NO Encontrado " + "(" + idMusico + ")");
         }
     }
-
+    
 }
