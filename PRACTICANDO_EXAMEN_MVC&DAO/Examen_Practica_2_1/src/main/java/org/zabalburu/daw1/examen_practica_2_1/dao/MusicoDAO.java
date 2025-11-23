@@ -18,7 +18,7 @@ public interface MusicoDAO {
     public List<Musico> getMusicos();
     public void modifyMusico(Musico modificar);
     public void removeMusico(int id);
-    public void assignInstrumento(int idMusico, Instrumento instrumentoAsignar);
+    public void assignInstrumento(int idMusico, int idInstrumento);
     // Como un Músico solo tiene un instrumento no hace falta pasarle el instrumento.
     public void unAssignInstrumento(int idMusico);
 }

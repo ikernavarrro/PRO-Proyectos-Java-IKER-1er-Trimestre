@@ -4,18 +4,25 @@
  */
 package org.zabalburu.daw1.examen_practica_2_1.modelo;
 
+import java.util.Objects;
+
 /**
  *
  * @author Iker Navarro Pérez
  */
 public class Instrumento {
+
     private static int contadorInstrumentos;
-    private int id;
+    private static final String[] FAMILIAS = {"Viento", "Cuerda", "Percusión", "Teclado"};
+    private Integer id;
     private String nombre;
     private String familia;
     private int añoFabricacion;
 
     public Instrumento(String nombre, String familia, int añoFabricacion) {
+        if (!esFamiliaValido(familia)) { // Comprobamos si es válido, si no lanzamos excepcion.
+            throw new IllegalArgumentException("Familia NO Válida " + "(" + familia + ")");
+        }
         this.id = ++contadorInstrumentos;
         this.nombre = nombre;
         this.familia = familia;
@@ -24,8 +31,8 @@ public class Instrumento {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.id;
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -41,7 +48,7 @@ public class Instrumento {
             return false;
         }
         final Instrumento other = (Instrumento) obj;
-        return this.id == other.id;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
@@ -57,6 +64,20 @@ public class Instrumento {
         this.nombre = nombre;
     }
 
+    private boolean esFamiliaValido(String familia) {
+        boolean esValido = false;
+        for (String string : FAMILIAS) { // Recorremos la matriz completa.
+            if (string.equalsIgnoreCase(familia)) { // Si es igual cambiamos el valor a true, si no hay coincidendias, lo dejamos en false y finalmente devolvemos.
+                    esValido = true;
+                }
+        }
+        return esValido;
+    }
+    
+    public static String[] getFamiliasValidas() {
+        return FAMILIAS;
+    }
+    
     public String getFamilia() {
         return familia;
     }
@@ -77,7 +98,8 @@ public class Instrumento {
         return contadorInstrumentos;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
+
 }

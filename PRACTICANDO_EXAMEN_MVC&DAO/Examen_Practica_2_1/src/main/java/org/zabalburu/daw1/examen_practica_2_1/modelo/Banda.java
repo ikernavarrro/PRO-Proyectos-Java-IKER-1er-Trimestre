@@ -7,6 +7,7 @@ package org.zabalburu.daw1.examen_practica_2_1.modelo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -15,24 +16,30 @@ import java.util.List;
 public class Banda {
 
     private static int contadorBandas;
-    private int id;
+    private static final String[] GENEROS = {"Rock", "Pop", "Jazz", "Clásico", "Metal", "Reggaeton"};
+    private Integer id;
     private String nombre;
     private String genero;
     private Date fechaCreacion;
+    private Musico coordinador;
     private List<Musico> musicos;
-
+    
     public Banda(String nombre, String genero, Date fechaCreacion) {
+        if (!esGeneroValido(genero)) { // Comprobamos si es válido, si no lanzamos excepcion.
+            throw new IllegalArgumentException("Género NO Válido " + "(" + genero + ")");
+        }
         this.id = ++contadorBandas;
         this.nombre = nombre;
         this.genero = genero;
         this.fechaCreacion = fechaCreacion;
+        this.coordinador = null;
         this.musicos = new ArrayList<>();
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 29 * hash + this.id;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -48,12 +55,14 @@ public class Banda {
             return false;
         }
         final Banda other = (Banda) obj;
-        return this.id == other.id;
+        return Objects.equals(this.id, other.id);
     }
+    
+    
 
     @Override
     public String toString() {
-        return "Banda{" + "id=" + id + ", nombre=" + nombre + ", genero=" + genero + ", fechaFormacion=" + fechaCreacion + ", musicos=" + musicos + '}';
+        return "Banda{" + "id=" + id + ", nombre=" + nombre + ", genero=" + genero + ", fechaCreacion=" + fechaCreacion + ", coordinador=" + coordinador + ", musicos=" + musicos + '}';
     }
     
     public String getNombre() {
@@ -63,12 +72,29 @@ public class Banda {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
+    private boolean esGeneroValido(String genero) {
+        boolean esValido = false;
+        for (String string : GENEROS) { // Recorremos la matriz completa.
+            if (string.equalsIgnoreCase(genero)) { // Si es igual cambiamos el valor a true, si no hay coincidendias, lo dejamos en false y finalmente devolvemos.
+                    esValido = true;
+                }
+        }
+        return esValido;
+    }
+    
+    public static String[] getGenerosValidos() {
+        return GENEROS;
+    }
+    
     public String getGenero() {
         return genero;
     }
-
+    
     public void setGenero(String genero) {
+        if (!esGeneroValido(genero)) { // Comprobamos si es válido, si no lanzamos excepcion.
+            throw new IllegalArgumentException("Género NO Válido " + genero);
+        }
         this.genero = genero;
     }
 
@@ -88,7 +114,7 @@ public class Banda {
         this.musicos = musicos;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -99,4 +125,13 @@ public class Banda {
     public void unAssignMusico(Musico musico) {
         musicos.remove(musico);
     }
+
+    public Musico getCoordinador() {
+        return coordinador;
+    }
+
+    public void setCoordinador(Musico coordinador) {
+        this.coordinador = coordinador;
+    }
+    
 }

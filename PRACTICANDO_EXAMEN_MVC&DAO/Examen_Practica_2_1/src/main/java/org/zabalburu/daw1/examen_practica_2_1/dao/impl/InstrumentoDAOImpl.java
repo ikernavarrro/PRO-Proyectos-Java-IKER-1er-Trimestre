@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.zabalburu.daw1.examen_practica_2_1.dao.InstrumentoDAO;
 import org.zabalburu.daw1.examen_practica_2_1.modelo.Instrumento;
-import org.zabalburu.daw1.examen_practica_2_1.modelo.Musico;
 
 /**
  *

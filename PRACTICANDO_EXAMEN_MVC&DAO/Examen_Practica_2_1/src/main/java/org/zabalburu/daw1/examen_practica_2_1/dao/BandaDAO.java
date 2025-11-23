@@ -18,7 +18,11 @@ public interface BandaDAO {
     public List<Banda> getBandas();
     public void modifyBanda(Banda modificar);
     public void removeBanda(int id);
-    public void assignMusico(int idBanda, Musico musicoAsignar);
-    // Como una Banda tiene muchos Músicos le pasamos el músico.
-    public void unAssignMusico(int idBanda, Musico musicoDesAsignar);
+    public void assignCoordinador(int idBanda, int idMusico);
+    // Como una Banda tiene solo tiene un Coordinador le pasamos el ID de banda.
+    public void unAssignCoordinador(int idBanda);
+    public void assignMusico(int idBanda, int idMusico);
+    // Como una Banda tiene muchos Músicos le pasamos el ID de músico.
+    public void unAssignMusico(int idBanda, int idMusico);
+    public List<Musico> getMusicosEnBanda(int idBanda);
 }

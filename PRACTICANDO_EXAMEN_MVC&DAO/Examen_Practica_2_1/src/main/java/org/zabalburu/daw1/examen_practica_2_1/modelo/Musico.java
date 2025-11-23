@@ -5,6 +5,7 @@
 package org.zabalburu.daw1.examen_practica_2_1.modelo;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -12,24 +13,24 @@ import java.util.Date;
  */
 public class Musico {
     private static int contadorMusicos;
-    private int id;
+    private Integer id;
     private String nombre;
     private int edad;
-    private Date fechaIncorporacion;
+    private int añosExperiencia;
     private Instrumento instrumento;
 
-    public Musico(String nombre, int edad, Date fechaIncorporacion, Instrumento instrumento) {
+    public Musico(String nombre, int edad, int añosExperiencia, Instrumento instrumento) {
         this.id = ++contadorMusicos;
         this.nombre = nombre;
         this.edad = edad;
-        this.fechaIncorporacion = fechaIncorporacion;
+        this.añosExperiencia = añosExperiencia;
         this.instrumento = instrumento;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + this.id;
+        hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -45,12 +46,12 @@ public class Musico {
             return false;
         }
         final Musico other = (Musico) obj;
-        return this.id == other.id;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "Musico{" + "id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", fechaIncorporacion=" + fechaIncorporacion + ", instrumento=" + instrumento + '}';
+        return "Musico{" + "id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", a\u00f1osExperiencia=" + añosExperiencia + ", instrumento=" + instrumento + '}';
     }
     
     public String getNombre() {
@@ -69,12 +70,12 @@ public class Musico {
         this.edad = edad;
     }
 
-    public Date getFechaIncorporacion() {
-        return fechaIncorporacion;
+    public int getAñosExperiencia() {
+        return añosExperiencia;
     }
 
-    public void setFechaIncorporacion(Date fechaIncorporacion) {
-        this.fechaIncorporacion = fechaIncorporacion;
+    public void setAñosExperiencia(int añosExperiencia) {
+        this.añosExperiencia = añosExperiencia;
     }
 
     public Instrumento getInstrumento() {
@@ -89,7 +90,7 @@ public class Musico {
         return contadorMusicos;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     } 
 }
