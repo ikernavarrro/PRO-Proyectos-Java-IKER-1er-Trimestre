@@ -4,6 +4,8 @@
 
 package org.zabalburu.daw1.examen_practica_2_1;
 
+import org.zabalburu.daw1.examen_practica_2_1.controlador.GestorBandaControlador;
+
 /**
  *
  * @author Iker Navarro Pérez
@@ -11,6 +13,7 @@ package org.zabalburu.daw1.examen_practica_2_1;
 public class Examen_Practica_2_1 {
 
     public static void main(String[] args) {
-        
+        GestorBandaControlador gb = new GestorBandaControlador();
+        gb.iniciar();
     }
 }

@@ -18,14 +18,14 @@ public class Banda {
     private int id;
     private String nombre;
     private String genero;
-    private Date fechaFormacion;
+    private Date fechaCreacion;
     private List<Musico> musicos;
 
-    public Banda(String nombre, String genero, Date fechaFormacion) {
+    public Banda(String nombre, String genero, Date fechaCreacion) {
         this.id = ++contadorBandas;
         this.nombre = nombre;
         this.genero = genero;
-        this.fechaFormacion = fechaFormacion;
+        this.fechaCreacion = fechaCreacion;
         this.musicos = new ArrayList<>();
     }
 
@@ -53,7 +53,7 @@ public class Banda {
 
     @Override
     public String toString() {
-        return "Banda{" + "id=" + id + ", nombre=" + nombre + ", genero=" + genero + ", fechaFormacion=" + fechaFormacion + ", musicos=" + musicos + '}';
+        return "Banda{" + "id=" + id + ", nombre=" + nombre + ", genero=" + genero + ", fechaFormacion=" + fechaCreacion + ", musicos=" + musicos + '}';
     }
     
     public String getNombre() {
@@ -72,12 +72,12 @@ public class Banda {
         this.genero = genero;
     }
 
-    public Date getFechaFormacion() {
-        return fechaFormacion;
+    public Date getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFechaFormacion(Date fechaFormacion) {
-        this.fechaFormacion = fechaFormacion;
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
     public List<Musico> getMusicos() {
