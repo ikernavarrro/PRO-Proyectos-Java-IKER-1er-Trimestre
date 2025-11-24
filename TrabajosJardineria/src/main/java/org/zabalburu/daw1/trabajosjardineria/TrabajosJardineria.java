@@ -4,6 +4,8 @@
 
 package org.zabalburu.daw1.trabajosjardineria;
 
+import org.zabalburu.daw1.trabajosjardineria.controlador.JardineriaControlador;
+
 /**
  *
  * @author Iker Navarro Perez
@@ -11,6 +13,7 @@ package org.zabalburu.daw1.trabajosjardineria;
 public class TrabajosJardineria {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        JardineriaControlador controlador = new JardineriaControlador();
+        controlador.iniciar();
     }
 }
