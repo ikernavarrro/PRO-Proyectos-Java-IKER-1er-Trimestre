@@ -29,10 +29,12 @@ import javax.swing.JTextField;
 public class Actividad26 {
 
     public static void main(String[] args) {
-        ventanaPrincipal();
+        /*ventanaPrincipal();*/
+        FrmActualizarPerfil ventana = new FrmActualizarPerfil();
+        
     }
     public static void ventanaPrincipal() {
-        // CREAND LA VENTANA
+       /* // CREAND LA VENTANA
         JFrame frmVentana = new JFrame();
         Dimension dmVentana = new Dimension(800, 600);
         Dimension dmTamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
@@ -119,5 +121,6 @@ public class Actividad26 {
         
         frmVentana.setVisible(true);
         JOptionPane.showMessageDialog(frmVentana, "Mi Primer JOptionPane con ventana padre :)");
+        */
     }
 }
