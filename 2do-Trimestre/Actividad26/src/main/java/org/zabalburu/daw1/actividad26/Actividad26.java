@@ -30,8 +30,9 @@ public class Actividad26 {
 
     public static void main(String[] args) {
         /*ventanaPrincipal();*/
-        FrmActualizarPerfil ventana = new FrmActualizarPerfil();
-        
+        FrmActualizarPerfil ventana1 = new FrmActualizarPerfil();
+        FrmGameZone ventana2 = new FrmGameZone();
+       
     }
     public static void ventanaPrincipal() {
        /* // CREAND LA VENTANA

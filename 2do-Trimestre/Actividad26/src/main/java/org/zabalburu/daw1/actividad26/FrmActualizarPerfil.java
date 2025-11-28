@@ -45,15 +45,15 @@ public class FrmActualizarPerfil extends JFrame {
     
     //PANELES
     private JPanel pnlDatos1 = new JPanel(new BorderLayout());
-    private JPanel pnlBordeInferior1 = new JPanel();
+    private JPanel pnlBordeInferior1 = new JPanel();  // BorderFactory.createMatteBorder 
     private JPanel pnlDatos2 = new JPanel(new BorderLayout());
-    private JPanel pnlBordeInferior2 = new JPanel();
+    private JPanel pnlBordeInferior2 = new JPanel(); // BorderFactory.createMatteBorder 
     private JPanel pnlDatos3 = new JPanel(new BorderLayout());
-    private JPanel pnlBordeInferior3 = new JPanel();
+    private JPanel pnlBordeInferior3 = new JPanel(); // BorderFactory.createMatteBorder 
     private JPanel pnlDatos4 = new JPanel(new BorderLayout());
-    private JPanel pnlBordeInferior4 = new JPanel();
+    private JPanel pnlBordeInferior4 = new JPanel(); // BorderFactory.createMatteBorder 
     private JPanel pnlDatos5 = new JPanel(new BorderLayout());
-    private JPanel pnlBordeInferior5 = new JPanel();
+    private JPanel pnlBordeInferior5 = new JPanel(); // BorderFactory.createMatteBorder 
     private JPanel pnlDatosMain = new JPanel(new GridLayout(5, 1, 0, 15));
     private JPanel pnlBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 15));
 
