@@ -101,7 +101,6 @@ public class Venta {
     }
 
     //TOSTRING
-
     @Override
     public String toString() {
         return "Venta{" + "id=" + id + ", fecha=" + fecha + ", productos=" + productos + '}';

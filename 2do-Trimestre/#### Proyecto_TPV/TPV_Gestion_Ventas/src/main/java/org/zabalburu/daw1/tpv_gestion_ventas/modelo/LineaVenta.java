@@ -4,17 +4,21 @@
  */
 package org.zabalburu.daw1.tpv_gestion_ventas.modelo;
 
+import java.util.Objects;
+
 /**
  *
  * @author Iker Navarro Pérez
  */
 public class LineaVenta {
-
+    
+    private Integer id;
     private Producto producto;
     private Integer cantidad;
 
     //CONSTRUCTOR
-    public LineaVenta(Producto producto, Integer cantidad) {
+    public LineaVenta(Integer id, Producto producto, Integer cantidad) {
+        this.id = id;
         this.producto = producto;
         this.cantidad = cantidad;
     }
@@ -57,11 +61,44 @@ public class LineaVenta {
         }
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+    
     //EQUALS y HASHCODE
-    //NO NECESITAMOS
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    
+    @Override    
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LineaVenta other = (LineaVenta) obj;
+        return Objects.equals(this.id, other.id);
+    }
+
     //TOSTRING
+
     @Override
     public String toString() {
-        return "LineaVenta{" + "producto=" + producto + ", cantidad=" + cantidad + '}';
+        return "LineaVenta{" + "id=" + id + ", producto=" + producto + ", cantidad=" + cantidad + '}';
     }
+    
 }
