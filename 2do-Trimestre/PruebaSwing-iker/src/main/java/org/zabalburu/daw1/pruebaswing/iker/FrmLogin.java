@@ -81,6 +81,12 @@ public class FrmLogin extends JFrame {
         pnlBotones.add(btnEntrar);
         btnSalir.setFont(fntFuente);
         btnSalir.addMouseListener(new SalirListener());
+        btnEntrar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent e) {
+                preguntaSalir();
+            }
+        });
         pnlBotones.setBackground(COLOR_FONDO);
         pnlBotones.setOpaque(true);
         pnlBotones.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 15));
@@ -101,11 +107,11 @@ public class FrmLogin extends JFrame {
         lblLogo.setOpaque(true);
         this.add(lblLogo, BorderLayout.WEST);
         this.add(pnlDatos, BorderLayout.CENTER);
-        
+
         this.getRootPane().setDefaultButton(btnEntrar);
-        
+
         this.addWindowListener(new VentanaListener());
-        
+
         this.setVisible(true);
     }
 
@@ -141,6 +147,7 @@ public class FrmLogin extends JFrame {
             System.out.println("Mouse Exited: " + e);
         }
     }
+
     /*class EntrarListener extends MouseAdapter {
 
         @Override
@@ -169,7 +176,7 @@ public class FrmLogin extends JFrame {
             System.exit(0);
         }
     }
-    
+
     class EntrarListener implements ActionListener {
 
         @Override
@@ -177,30 +184,31 @@ public class FrmLogin extends JFrame {
             entrarActionPerformed(e);
         }
     }
-    private void  entrarActionPerformed(ActionEvent e) {
-            String usuario = txtUsuario.getText();
-            String password = new String(pwdPassword.getPassword());
-            if (usuario.isBlank()){
-                JOptionPane.showMessageDialog(this,"El nombre es OBLIGATORIO!","Faltan datos", JOptionPane.ERROR_MESSAGE);
-                txtUsuario.requestFocus();
-            } else if (password.isBlank()){
-                JOptionPane.showMessageDialog(this,"La contraseña es OBLIGATORIA!","Faltan datos", JOptionPane.ERROR_MESSAGE);
-                pwdPassword.requestFocus();
+
+    private void entrarActionPerformed(ActionEvent e) {
+        String usuario = txtUsuario.getText();
+        String password = new String(pwdPassword.getPassword());
+        if (usuario.isBlank()) {
+            JOptionPane.showMessageDialog(this, "El nombre es OBLIGATORIO!", "Faltan datos", JOptionPane.ERROR_MESSAGE);
+            txtUsuario.requestFocus();
+        } else if (password.isBlank()) {
+            JOptionPane.showMessageDialog(this, "La contraseña es OBLIGATORIA!", "Faltan datos", JOptionPane.ERROR_MESSAGE);
+            pwdPassword.requestFocus();
+        } else {
+            if (usuario.equalsIgnoreCase("iker") && password.equals("1234.")) {
+                JOptionPane.showMessageDialog(this, "Bienvenido Iker Zabalburu Ikastetxea!");
             } else {
-                if (usuario.equalsIgnoreCase("iker") && password.equals("1234.")) {
-                    JOptionPane.showMessageDialog(this, "Bienvenido Iker Zabalburu Ikastetxea!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE);
-                }
+                JOptionPane.showMessageDialog(this, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
-    
+    }
+
     class VentanaListener extends WindowAdapter {
 
         @Override
         public void windowClosing(WindowEvent e) {
             preguntaSalir();
         }
-        
+
     }
 }
