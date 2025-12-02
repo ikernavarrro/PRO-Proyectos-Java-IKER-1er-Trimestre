@@ -21,12 +21,12 @@ import org.zabalburu.daw1.tpv_gestion_ventas.excepciones.StockInsuficienteExcept
  *
  * @author Iker Navarro Pérez
  */
-public class TPVServicio {
+public class TPV_Servicio {
 
     private ProductoDAO productoDAO;
     private VentaDAO ventaDAO;
 
-    public TPVServicio() {
+    public TPV_Servicio() {
         this.productoDAO = new ProductoDAOImpl();
         this.ventaDAO = new VentaDAOImpl();
         //DATOS EN MEMORIA AQUÍ MÉTODO inicializarDatos();
