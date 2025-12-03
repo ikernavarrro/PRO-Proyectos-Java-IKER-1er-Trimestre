@@ -14,10 +14,25 @@ import javax.swing.JOptionPane;
  */
 public class MainFrame extends JFrame {
     
-    public MainFrame() {
-    }
+    private LoginPanel pnlLogin = new LoginPanel();
+    private MenuPanel pnlMenu = new MenuPanel();
+    private TPVPanel pnlTPV = new TPVPanel();
+    private GestorProductosPanel pnlGestorProductos = new GestorProductosPanel();
     
-    //========MOSTRAR-MENSAJES===============
+    public MainFrame() {
+        
+    }
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    /* 
+   //========MOSTRAR-MENSAJES===============
     public void mostrarMensajeInformativo(String mensaje, Component ventanaPadre) {
         JOptionPane.showMessageDialog(ventanaPadre, mensaje, "Información - TPV", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -25,14 +40,10 @@ public class MainFrame extends JFrame {
     public void mostrarMensajeError(String mensaje, Component ventanaPadre) {
         JOptionPane.showMessageDialog(ventanaPadre, mensaje, "Algo no va bien...", JOptionPane.ERROR_MESSAGE);
     }
-    
+     */
     //========PANEL-PRINCIPAL================    
-    
-    
     //========PANEL-LOGIN====================
     //========PANEL-MENÚ=====================
     //========PANEL-TPV======================
     //========PANEL-GESTIÓN-PRODUCTOS========
-
-    
 }

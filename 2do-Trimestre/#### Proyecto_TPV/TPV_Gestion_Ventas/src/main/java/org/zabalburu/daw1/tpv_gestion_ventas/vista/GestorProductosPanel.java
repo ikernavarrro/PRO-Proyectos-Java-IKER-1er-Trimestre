@@ -10,6 +10,6 @@ import javax.swing.JPanel;
  *
  * @author Iker Navarro Pérez
  */
-public class GestorProductosPanel extends JPanel{
+public class GestorProductosPanel extends JPanel {
     
 }
