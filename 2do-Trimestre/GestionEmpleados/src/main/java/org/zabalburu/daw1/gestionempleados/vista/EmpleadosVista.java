@@ -9,8 +9,12 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -32,6 +36,11 @@ import org.zabalburu.daw1.gestionempleados.modelo.Empleado;
  * @author Iker
  */
 public class EmpleadosVista extends JFrame {
+
+    private static final int ALTA = 0;
+    private static final int MODIFICACION = 1;
+    private static final int CONSULTA = 2;
+    private int estado = CONSULTA;
 
     private JLabel lblTitulo = new JLabel("Empleados");
     private JLabel lblFoto = new JLabel();
@@ -102,6 +111,7 @@ public class EmpleadosVista extends JFrame {
 
         //TABBEDPANE (Datos del empleado)
         pnlGeneral.add(lblId);
+        txtId.setEnabled(false); // EL ID NUNCA SE PODRÁ MODIFICAR
         pnlGeneral.add(txtId);
         pnlGeneral.add(lblNombre);
         pnlGeneral.add(txtNombre);
@@ -148,22 +158,56 @@ public class EmpleadosVista extends JFrame {
         //PANEL DE BOTONES
         pnlBotones.setLayout(bl);
         pnlBotones.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        btnPrimero.addActionListener(e -> {
+            pos = 0;
+            mostrar();
+        });
+
         btnPrimero.setToolTipText("Primer Empleado");
         pnlBotones.add(btnPrimero);
+        btnAnterior.addActionListener(e -> {
+            pos--; //Para retroceder al anterior empleado.
+            mostrar();
+        });
         btnAnterior.setToolTipText("Anterior Empleado");
         pnlBotones.add(btnAnterior);
+        btnSiguiente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (pos < empleados.size() - 1) {
+                    pos++; //Para pasar al siguiente empleado.
+                    mostrar();
+                }
+            }
+        });
         btnSiguiente.setToolTipText("Siguiente Empleado");
         pnlBotones.add(btnSiguiente);
+        btnUltimo.addActionListener(e -> {
+            pos = empleados.size() - 1;
+            mostrar();
+        });
         btnUltimo.setToolTipText("Último Empleado");
         pnlBotones.add(btnUltimo);
         //AÑADIMOS UN MUELLE
         pnlBotones.add(Box.createHorizontalGlue());
+        btnNuevo.addActionListener(e -> {
+            estado = ALTA;
+            mostrar();
+        });
         btnNuevo.setToolTipText("Nuevo Empleado");
         pnlBotones.add(btnNuevo);
+        btnModificar.addActionListener(e -> {
+            estado = MODIFICACION;
+            mostrar();
+        });
         btnModificar.setToolTipText("Modificar Empleado");
         pnlBotones.add(btnModificar);
         btnEliminar.setToolTipText("Eliminar Empleado");
         pnlBotones.add(btnEliminar);
+        btnCancelar.addActionListener(e -> {
+            estado = CONSULTA;
+            mostrar();
+        });
         btnCancelar.setToolTipText("Cancelar");
         pnlBotones.add(btnCancelar);
         btnGuardar.setToolTipText("Guardar Empleado");
@@ -180,22 +224,60 @@ public class EmpleadosVista extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        mostrar();
     }
 
     private void mostrar() {
-        Empleado actual = empleados.get(pos);
-        txtId.setText(String.valueOf(actual.getId()));
-        txtNombre.setText(String.valueOf(actual.getNombre()));
-        txtApellidos.setText(String.valueOf(actual.getApellidos()));
-        txtDireccion.setText(String.valueOf(actual.getDireccion()));
-        txtCodigoPostal.setText(String.valueOf(actual.getCodifoPostal()));
-        txtLocalidad.setText(String.valueOf(actual.getPoblacion()));
-        txtProvincia.setText(String.valueOf(actual.getProvincia()));
-        txtEmail.setText(String.valueOf(actual.getEmail()));
-        txtTelefono.setText(String.valueOf(actual.getTelefono()));
-        fmtFechaAlta.setValue(actual.getFechaAlta());
-        fmtFechaNacimiento.setValue(actual.getFechaNacimiento());
-        fmtSueldo.setValue(actual.getSueldo());
+        if (estado == ALTA) {
+            txtId.setText("");
+            txtNombre.setText("");
+            txtApellidos.setText("");
+            txtDireccion.setText("");
+            txtCodigoPostal.setText("");
+            txtLocalidad.setText("");
+            txtProvincia.setText("");
+            txtEmail.setText("");
+            txtTelefono.setText("");
+            fmtFechaAlta.setValue(new Date());
+            fmtFechaNacimiento.setValue(new GregorianCalendar(1970, 0, 1).getTime());
+            fmtSueldo.setValue(0.0);
+        } else {
+            Empleado actual = empleados.get(pos);
+            txtId.setText(String.valueOf(actual.getId()));
+            txtNombre.setText(String.valueOf(actual.getNombre()));
+            txtApellidos.setText(String.valueOf(actual.getApellidos()));
+            txtDireccion.setText(String.valueOf(actual.getDireccion()));
+            txtCodigoPostal.setText(String.valueOf(actual.getCodifoPostal()));
+            txtLocalidad.setText(String.valueOf(actual.getPoblacion()));
+            txtProvincia.setText(String.valueOf(actual.getProvincia()));
+            txtEmail.setText(String.valueOf(actual.getEmail()));
+            txtTelefono.setText(String.valueOf(actual.getTelefono()));
+            fmtFechaAlta.setValue(actual.getFechaAlta());
+            fmtFechaNacimiento.setValue(actual.getFechaNacimiento());
+            fmtSueldo.setValue(actual.getSueldo());
+        }
+        txtNombre.setEditable(estado != CONSULTA);
+        txtApellidos.setEditable(estado != CONSULTA);
+        txtDireccion.setEditable(estado != CONSULTA);
+        txtCodigoPostal.setEditable(estado != CONSULTA);
+        txtLocalidad.setEditable(estado != CONSULTA);
+        txtProvincia.setEditable(estado != CONSULTA);
+        txtEmail.setEditable(estado != CONSULTA);
+        txtTelefono.setEditable(estado != CONSULTA);
+        fmtFechaAlta.setEditable(estado != CONSULTA);
+        fmtFechaNacimiento.setEditable(estado != CONSULTA);
+        fmtSueldo.setEditable(estado != CONSULTA);
+        
+        btnAnterior.setEnabled(estado == CONSULTA && pos > 0);
+        btnPrimero.setEnabled(estado == CONSULTA && pos > 0);
+        btnSiguiente.setEnabled(estado == CONSULTA && pos < empleados.size()-1);
+        btnUltimo.setEnabled(estado == CONSULTA && pos < empleados.size()-1);
+        
+        btnNuevo.setEnabled(estado == CONSULTA);
+        btnModificar.setEnabled(estado == CONSULTA);
+        btnCancelar.setEnabled(estado != CONSULTA);
+        btnGuardar.setEnabled(estado != CONSULTA);
+        btnEliminar.setEnabled(estado == CONSULTA);
+        
     }
-
 }
