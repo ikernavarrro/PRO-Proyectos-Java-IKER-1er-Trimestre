@@ -26,7 +26,7 @@ import javax.swing.JTextField;
  *
  * @author Iker Navarro Pérez
  */
-public class Actividad26 {
+public class Actividad27_1 {
 
     public static void main(String[] args) {
         /*ventanaPrincipal();*/

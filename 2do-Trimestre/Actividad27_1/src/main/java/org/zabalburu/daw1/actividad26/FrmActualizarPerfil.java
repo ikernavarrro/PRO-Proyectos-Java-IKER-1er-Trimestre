@@ -6,10 +6,13 @@ package org.zabalburu.daw1.actividad26;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -24,7 +27,7 @@ import javax.swing.border.BevelBorder;
  * @author Iker Navarro Pérez
  */
 public class FrmActualizarPerfil extends JFrame {
-    
+
     //COMPONENTES
     private JLabel lblTitulo = new JLabel("Actualiza Tu Perfil");
     private JLabel lblNombre = new JLabel("Nombre Completo:");
@@ -39,10 +42,8 @@ public class FrmActualizarPerfil extends JFrame {
     private JTextField txtSitioWeb = new JTextField();
     private JButton btnCancelar = new JButton("Cancelar");
     private JButton btnGuardar = new JButton("Guardar Cambios");
-    
+
     //CONFIGURACIÓN COMPONENTES
-    
-    
     //PANELES
     private JPanel pnlDatos1 = new JPanel(new BorderLayout());
     private JPanel pnlBordeInferior1 = new JPanel();  // BorderFactory.createMatteBorder 
@@ -74,7 +75,7 @@ public class FrmActualizarPerfil extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("Gestiona tu perfil | Iker Navarro Pérez");
-        
+
         //CONFIGURACIÓN COMPONENTES
         //Título
         lblTitulo.setPreferredSize(new Dimension(0, 50));
@@ -83,7 +84,7 @@ public class FrmActualizarPerfil extends JFrame {
         lblTitulo.setBackground(clrAzul);
         lblTitulo.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
         lblTitulo.setOpaque(true);
-        
+
         //pnlBordeInferior 1,2,3,4,5 (BorderLayout)
         Dimension borde = new Dimension(0, 2);
         //1
@@ -106,16 +107,13 @@ public class FrmActualizarPerfil extends JFrame {
         pnlBordeInferior5.setBackground(clrAzul);
         pnlBordeInferior5.setPreferredSize(borde);
         pnlBordeInferior5.setOpaque(true);
-        
-        
-        
+
         //pnlDatos1 (BorderLayout)
         lblNombre.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
         pnlDatos1.add(lblNombre, BorderLayout.NORTH);
         txtNombre.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         pnlDatos1.add(txtNombre, BorderLayout.CENTER);
         pnlDatos1.add(pnlBordeInferior1, BorderLayout.SOUTH);
-        
 
         //pnlDatos2 (BorderLayout)
         lblCorreo.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
@@ -149,32 +147,78 @@ public class FrmActualizarPerfil extends JFrame {
         pnlDatosMain.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
         pnlDatosMain.add(pnlDatos1);
         pnlDatosMain.add(pnlDatos2);
-        pnlDatosMain.add(pnlDatos3); 
+        pnlDatosMain.add(pnlDatos3);
         pnlDatosMain.add(pnlDatos4);
         pnlDatosMain.add(pnlDatos5);
-        
+
         //pnlBotones (FlowLayout)
-        btnCancelar.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); 
+        btnCancelar.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
         btnCancelar.setFont(fntVerdana.deriveFont(Font.BOLD, 12f));
         btnCancelar.setForeground(Color.WHITE);
         btnCancelar.setBackground(Color.LIGHT_GRAY);
         pnlBotones.add(btnCancelar);
-        btnGuardar.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); 
+        btnGuardar.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
         btnGuardar.setFont(fntVerdana.deriveFont(Font.BOLD, 12f));
         btnGuardar.setForeground(Color.WHITE);
         btnGuardar.setBackground(clrAzul);
         pnlBotones.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 20));
         pnlBotones.add(btnGuardar);
-        
-        
+
         //VENTANA PRINCIPAL
         this.add(lblTitulo, BorderLayout.NORTH);
         this.add(pnlBotones, BorderLayout.SOUTH);
         this.add(pnlDatosMain, BorderLayout.CENTER);
-        
-                
+
+        //Receptor Eventos 
+        /*
+            En esta compleja repetitiva hacemos lo siguiente: 
+            1. Cogemos los componentes de la Ventana principal y los almacenamos uno a uno en p1 , en este caso (lblTitulo, pnlBotones y pnlDatosMain).
+            2. Si p1 es instancia de JPanel entramos, en este caso, solo entra con (pnlBotones y pnlDatosMain).
+            3. Recorremos los componentes de cada uno y los almacenamos en p2 (De pnlBotones: btnCanvelar y btnGuardar | De pnlsDatosMain: pnlDatos1 hasta pnlDatos5).
+            4. Si p2 es instancia de JPanel entramos, en este caso solo entramos desde pnlDatos1 hasta pnlDatos5.
+            5. Recorremos los componentes de cada uno y los almacenamos uno a uno en c, en este caso (Todos los componentes de cada uno (lbl y txt))
+            6. Si c es instancia de JTextField entramos en este caso con los etiquetados con txt...
+            7. Le añadimos el listener y vuelta a empezar hasta terminar con los componentes.
+         */
+        FocusListener focusListener = new ActualizarPerfilFocusListener();
+        /*1*/
+        for (Component p1 : this.getContentPane().getComponents()) {
+            /*2*/
+            if (p1 instanceof JPanel) {
+                /*3*/
+                for (Component p2 : ((JPanel) p1).getComponents()) {
+                    /*4*/
+                    if (p2 instanceof JPanel) {
+                        /*5*/
+                        for (Component c : ((JPanel) p2).getComponents()) {
+                            /*6*/
+                            if (c instanceof JTextField) {
+                                /*7*/
+                                c.addFocusListener(focusListener);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         //VISIBILIDAD DE VENTANA
         this.setVisible(true);
     }
 
+}
+
+class ActualizarPerfilFocusListener implements FocusListener {
+
+    @Override
+    public void focusGained(FocusEvent e) {
+        Component c = (Component) e.getSource();
+        c.setBackground(Color.LIGHT_GRAY);
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        Component c = (Component) e.getSource();
+        c.setBackground(Color.WHITE);
+    }
 }
