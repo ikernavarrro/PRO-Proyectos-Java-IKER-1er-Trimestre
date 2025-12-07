@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.zabalburu.daw1.actividad26;
+package org.zabalburu.daw1.actividad27;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -11,16 +11,17 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.BevelBorder;
 
 /**
  *
@@ -112,6 +113,7 @@ public class FrmActualizarPerfil extends JFrame {
         lblNombre.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
         pnlDatos1.add(lblNombre, BorderLayout.NORTH);
         txtNombre.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        txtNombre.setName("Nombre");
         pnlDatos1.add(txtNombre, BorderLayout.CENTER);
         pnlDatos1.add(pnlBordeInferior1, BorderLayout.SOUTH);
 
@@ -119,6 +121,7 @@ public class FrmActualizarPerfil extends JFrame {
         lblCorreo.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
         pnlDatos2.add(lblCorreo, BorderLayout.NORTH);
         txtCorreo.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        txtCorreo.setName("Correo");
         pnlDatos2.add(txtCorreo, BorderLayout.CENTER);
         pnlDatos2.add(pnlBordeInferior2, BorderLayout.SOUTH);
 
@@ -126,6 +129,7 @@ public class FrmActualizarPerfil extends JFrame {
         lblTelefono.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
         pnlDatos3.add(lblTelefono, BorderLayout.NORTH);
         txtTelefono.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        txtTelefono.setName("Teléfono");
         pnlDatos3.add(txtTelefono, BorderLayout.CENTER);
         pnlDatos3.add(pnlBordeInferior3, BorderLayout.SOUTH);
 
@@ -133,6 +137,7 @@ public class FrmActualizarPerfil extends JFrame {
         lblDireccion.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
         pnlDatos4.add(lblDireccion, BorderLayout.NORTH);
         txtDireccion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        txtDireccion.setName("Dirección");
         pnlDatos4.add(txtDireccion, BorderLayout.CENTER);
         pnlDatos4.add(pnlBordeInferior4, BorderLayout.SOUTH);
 
@@ -140,6 +145,7 @@ public class FrmActualizarPerfil extends JFrame {
         lblSitioWeb.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
         pnlDatos5.add(lblSitioWeb, BorderLayout.NORTH);
         txtSitioWeb.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        txtSitioWeb.setName("Sitio Web");
         pnlDatos5.add(txtSitioWeb, BorderLayout.CENTER);
         pnlDatos5.add(pnlBordeInferior5, BorderLayout.SOUTH);
 
@@ -161,6 +167,13 @@ public class FrmActualizarPerfil extends JFrame {
         btnGuardar.setFont(fntVerdana.deriveFont(Font.BOLD, 12f));
         btnGuardar.setForeground(Color.WHITE);
         btnGuardar.setBackground(clrAzul);
+        //Clase anónima.
+        btnGuardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                registrarDatos(e);
+            }
+        });
         pnlBotones.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 20));
         pnlBotones.add(btnGuardar);
 
@@ -182,7 +195,7 @@ public class FrmActualizarPerfil extends JFrame {
          */
         FocusListener focusListener = new ActualizarPerfilFocusListener();
         /*1*/
-        for (Component p1 : this.getContentPane().getComponents()) {
+        for (Component p1 : getContentPane().getComponents()) {
             /*2*/
             if (p1 instanceof JPanel) {
                 /*3*/
@@ -205,6 +218,51 @@ public class FrmActualizarPerfil extends JFrame {
         //VISIBILIDAD DE VENTANA
         this.setVisible(true);
     }
+    
+    private void registrarDatos(ActionEvent e) {
+                //VAMOS A REUTILIZAR EL EJERCICIO DE LA ACTIVIDAD 1 PARA ACCEDER A TODOS LOS COMPONENTES DE TEXTFIELD
+                int vacio = 0; // Estos campos nos permitirán contar cuantos hay vacios y cuantos llenos.
+                int lleno = 0; 
+                String mensaje = """
+                                                         <html>
+                                                            <h1>Perfil Actualizado Correctamente</h1>
+                                                            <hr />
+                                                            <p>
+                                                         """;
+                // Los declaramos fuera para que no se reinicien por cada componente.
+                
+                for (Component p1 : getContentPane().getComponents()) {
+                    if (p1 instanceof JPanel) {
+                        for (Component p2 : ((JPanel) p1).getComponents()) {
+                            if (p2 instanceof JPanel) {
+                                for (Component c : ((JPanel) p2).getComponents()) {
+                                    if (c instanceof JTextField) {
+                                        if (((JTextField) c).getText().isEmpty()) {
+                                            // PRUEBA System.out.println("VACIO");
+                                            JOptionPane.showMessageDialog(FrmActualizarPerfil.this, "<html><h1>¡RELLENE EL CAMPO %s!</h1></html>".formatted(c.getName()));
+                                            vacio++; // Sumamos uno a vacio.
+                                        } else {
+                                            // PRUEBA System.out.println("LLENO");
+                                            mensaje += """
+                                                       %s : %s <br />
+                                                       """.formatted(c.getName(), ((JTextField) c).getText());
+                                            lleno++; // Sumamos uno a lleno.
+                                        }
+                                        if (vacio == 0 && lleno == 5) { // Si vacio es IGUAL a 0, es decir no tiene campos vacios Y lleno es IGUAL a 5, es decir están todos llenos. Mostramos mensaje.
+                                            mensaje += """
+                                                          </p>
+                                                          <hr />
+                                                       </html>
+                                                       """;
+                                            JOptionPane.showMessageDialog(FrmActualizarPerfil.this, mensaje);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
 }
 

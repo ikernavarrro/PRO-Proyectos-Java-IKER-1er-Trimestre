@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package org.zabalburu.daw1.actividad26;
+package org.zabalburu.daw1.actividad27;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -26,7 +26,7 @@ import javax.swing.JTextField;
  *
  * @author Iker Navarro Pérez
  */
-public class Actividad27_1 {
+public class Actividad27_2 {
 
     public static void main(String[] args) {
         /*ventanaPrincipal();*/
