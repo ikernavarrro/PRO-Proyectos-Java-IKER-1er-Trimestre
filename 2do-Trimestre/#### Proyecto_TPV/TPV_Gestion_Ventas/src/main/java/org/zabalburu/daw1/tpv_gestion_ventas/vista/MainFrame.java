@@ -7,6 +7,7 @@ package org.zabalburu.daw1.tpv_gestion_ventas.vista;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -65,6 +66,11 @@ public class MainFrame extends JFrame {
 
     public void mostrarLoginPanel() {
         this.getContentPane().removeAll();
+        this.setTitle("TPV - NAVIKER");
+        this.setIconImage(new ImageIcon("icons/favicon_naviker.png").getImage());
+        this.setSize(new Dimension(400, 250));
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.add(pnlLogin);
         this.revalidate();
         this.repaint();

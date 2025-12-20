@@ -4,6 +4,7 @@
  */
 package org.zabalburu.daw1.tpv_gestion_ventas.vista;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -12,4 +13,8 @@ import javax.swing.JPanel;
  */
 public class MenuPanel extends JPanel {
     
+    //COMPONENTES
+    //pnlUsuarioSesion
+    private JLabel lblFotoUsuario = new JLabel();
+    private JLabel lblNombreUsuario = new JLabel();
 }
