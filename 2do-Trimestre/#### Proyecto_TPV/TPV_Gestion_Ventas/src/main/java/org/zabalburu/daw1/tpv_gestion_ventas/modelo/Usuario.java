@@ -5,14 +5,20 @@
 package org.zabalburu.daw1.tpv_gestion_ventas.modelo;
 
 import java.util.Objects;
+import org.zabalburu.daw1.tpv_gestion_ventas.util.RangoUsuario;
 
 /**
  *
  * @author Iker Navarro Pérez
  */
 public class Usuario {
-
+    
+    //private final static int RANGO_ADMIN = 1;
+    //private final static int RANGO_EMPLEADO = 0;
+    //private int rango;
+    
     private Integer id;
+    private RangoUsuario rango;
     private String correoElectronico;
     private String hash;
 
@@ -49,6 +55,14 @@ public class Usuario {
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public RangoUsuario getRango() {
+        return rango;
+    }
+
+    public void setRango(RangoUsuario rango) {
+        this.rango = rango;
     }
     
     //EQUALS y HASHCODE

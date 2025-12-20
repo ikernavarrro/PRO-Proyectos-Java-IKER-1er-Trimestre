@@ -41,13 +41,7 @@ public class LoginPanel extends JPanel {
     //Constructor
     public LoginPanel() {
         //Configuración Panel Login
-        this.setBorder(BorderFactory.createCompoundBorder( //A.1
-                BorderFactory.createEmptyBorder(10, 10, 10, 10), //B.1.1
-                BorderFactory.createCompoundBorder( //C.1.2
-                        BorderFactory.createCompoundBorder( //D.1.2.1                              // Tenemos un borde (A) el cual le componen dos bordes (B,C) y 
-                                BorderFactory.createRaisedBevelBorder(),//E.1.2.1.1                // dentro del borde (C) lo componen dos bordes mas (D,G) y   
-                                BorderFactory.createLoweredBevelBorder()),//F.1.2.1.2              // dentro del borde (D) lo componen dos bordes mas (E,F)     
-                        BorderFactory.createEmptyBorder(10, 10, 10, 10)))); //G.1.2.2  
+        this.setBorder(AppConfig.bordeMarco);
         this.setLayout(new GridLayout(3, 1, 10, 10));
 
         //pnlUsuario

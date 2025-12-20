@@ -8,6 +8,9 @@ import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import org.zabalburu.daw1.tpv_gestion_ventas.modelo.Usuario;
+import org.zabalburu.daw1.tpv_gestion_ventas.util.RangoUsuario;
 import org.zabalburu.daw1.tpv_gestion_ventas.vista.LoginPanel;
 import org.zabalburu.daw1.tpv_gestion_ventas.vista.MainFrame;
 
@@ -23,7 +26,28 @@ public class TPV_Gestion_Ventas {
         FlatIntelliJLaf.setup();
         
         // --- Pruebas
+        
+        int opc = 99999;
         MainFrame prueba = new MainFrame();
-        prueba.mostrarLoginPanel();
+        while (opc != 0) {            
+            opc = Integer.parseInt(JOptionPane.showInputDialog(null, "opcion"));
+            
+            switch (opc) {
+                case 1:
+                    prueba.mostrarLoginPanel();
+                    break;
+                case 2:
+                    prueba.mostrarMenuPanel();
+                    break;
+                case 3:
+                    prueba.mostrarTPVPanel();
+                    break;
+                case 4:
+                    prueba.mostrarGestorPanel();
+                    break;    
+            }
+        }
+        
     }
+    
 }

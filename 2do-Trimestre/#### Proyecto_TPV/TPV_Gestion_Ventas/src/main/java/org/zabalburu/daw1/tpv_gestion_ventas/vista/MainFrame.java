@@ -10,6 +10,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.zabalburu.daw1.tpv_gestion_ventas.config.AppConfig;
 
 /**
  *
@@ -22,9 +23,6 @@ public class MainFrame extends JFrame {
     private TPVPanel pnlTPV;
     private GestorProductosPanel pnlGestorProductos;
 
-    //Dimensiones - MainFrame
-    Dimension dmVentana = new Dimension(800, 600);
-
     //Constructor
     public MainFrame() {
         //Inicializamos los paneles
@@ -35,45 +33,60 @@ public class MainFrame extends JFrame {
 
         //Configuración MainFrame
         this.setTitle("TPV - NAVIKER");
-        this.setSize(dmVentana);
+        this.setIconImage(new ImageIcon("icons/favicon_naviker.png").getImage());
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.add(pnlLogin);
-        this.setVisible(true);
     }
 
     //Métodos 
+    
+    private void reiniciarVentana(boolean maximizada, Dimension tamaño) {
+        this.setVisible(false);
+        this.getContentPane().removeAll(); // Quitamos TODOS los paneles que hayan.
+        this.setResizable(false);    
+        if (maximizada) {
+            this.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizamos
+        } else {
+            this.dispose();                              // Destruímos la ventana temporalmente
+            this.setExtendedState(JFrame.NORMAL);        // Volvemos a normal
+            this.invalidate();                           // Recalcula layout           
+            this.repaint();                              // Redibujamos la ventana                  
+            this.setSize(tamaño);                         
+        }
+        this.setLocationRelativeTo(null); // Centramos
+    }
+
     public void mostrarMenuPanel() {
-        this.getContentPane().removeAll(); //Quitamos TODOS los paneles que hayan.
-        this.add(pnlMenu); // AÑADIMOS EL NUEVO
-        this.revalidate(); // REFRESCAMOS (Recalcula el layout)
-        this.repaint(); // REDIBUJAMOS (Redibuja la ventana)
+        reiniciarVentana(false, AppConfig.dmVentanaMenu);
+        this.add(pnlMenu); 
+        this.revalidate(); 
+        this.repaint(); 
+        this.setVisible(true);
     }
 
     public void mostrarTPVPanel() {
-        this.getContentPane().removeAll();
+        reiniciarVentana(true, AppConfig.dmVentanaTPV);
         this.add(pnlTPV);
         this.revalidate();
         this.repaint();
+        this.setVisible(true);
     }
 
     public void mostrarGestorPanel() {
-        this.getContentPane().removeAll();
+        reiniciarVentana(false, AppConfig.dmVentanaGestionProductos);
         this.add(pnlGestorProductos);
         this.revalidate();
         this.repaint();
+        this.setVisible(true);
     }
 
     public void mostrarLoginPanel() {
-        this.getContentPane().removeAll();
-        this.setTitle("TPV - NAVIKER");
-        this.setIconImage(new ImageIcon("icons/favicon_naviker.png").getImage());
-        this.setSize(new Dimension(400, 250));
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
+        reiniciarVentana(false, AppConfig.dmVentanaLogin);
         this.add(pnlLogin);
         this.revalidate();
         this.repaint();
+        this.setVisible(true);
     }
 
     public void mostrarMensaje(String mensaje) {
