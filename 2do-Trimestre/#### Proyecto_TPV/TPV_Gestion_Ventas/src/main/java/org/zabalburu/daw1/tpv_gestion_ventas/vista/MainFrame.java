@@ -41,7 +41,7 @@ public class MainFrame extends JFrame {
 
     //Métodos 
     
-    private void reiniciarVentana(boolean maximizada, Dimension tamaño) {
+    private void reconfigurarVentana(boolean maximizada, Dimension tamaño) {
         this.setVisible(false);
         this.getContentPane().removeAll(); // Quitamos TODOS los paneles que hayan.
         this.setResizable(false);    
@@ -58,7 +58,7 @@ public class MainFrame extends JFrame {
     }
 
     public void mostrarMenuPanel() {
-        reiniciarVentana(false, AppConfig.dmVentanaMenu);
+        reconfigurarVentana(false, AppConfig.dmVentanaMenu);
         this.add(pnlMenu); 
         this.revalidate(); 
         this.repaint(); 
@@ -66,7 +66,7 @@ public class MainFrame extends JFrame {
     }
 
     public void mostrarTPVPanel() {
-        reiniciarVentana(true, AppConfig.dmVentanaTPV);
+        reconfigurarVentana(true, AppConfig.dmVentanaTPV);
         this.add(pnlTPV);
         this.revalidate();
         this.repaint();
@@ -74,7 +74,7 @@ public class MainFrame extends JFrame {
     }
 
     public void mostrarGestorPanel() {
-        reiniciarVentana(false, AppConfig.dmVentanaGestionProductos);
+        reconfigurarVentana(false, AppConfig.dmVentanaGestionProductos);
         this.add(pnlGestorProductos);
         this.revalidate();
         this.repaint();
@@ -82,7 +82,7 @@ public class MainFrame extends JFrame {
     }
 
     public void mostrarLoginPanel() {
-        reiniciarVentana(false, AppConfig.dmVentanaLogin);
+        reconfigurarVentana(false, AppConfig.dmVentanaLogin);
         this.add(pnlLogin);
         this.revalidate();
         this.repaint();

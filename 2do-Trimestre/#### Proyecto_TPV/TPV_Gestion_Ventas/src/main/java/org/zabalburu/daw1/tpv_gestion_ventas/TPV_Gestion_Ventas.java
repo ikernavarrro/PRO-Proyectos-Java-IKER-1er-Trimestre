@@ -30,7 +30,7 @@ public class TPV_Gestion_Ventas {
         int opc = 99999;
         MainFrame prueba = new MainFrame();
         while (opc != 0) {            
-            opc = Integer.parseInt(JOptionPane.showInputDialog(null, "opcion"));
+            opc = Integer.parseInt(JOptionPane.showInputDialog(null, "opciones: 1-login, 2-menu, 3-tpv, 4-gestion"));
             
             switch (opc) {
                 case 1:
