@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.zabalburu.daw1.flintbibliotecalibro_1.modelo;
+package org.zabalburu.daw1.flintescuelaalumno_1.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,23 +12,23 @@ import java.util.Objects;
  *
  * @author Iker Navarro Pérez
  */
-public class Biblioteca {
+public class Escuela {
     private Integer id;
     private String nombre;
-    private String ubicacion;
+    private String direccion;
     private String telefono;
-    private List<Libro> libros;
+    private List<Alumno> alumnos;
 
-    public Biblioteca() {
-        this.libros = new ArrayList<>();
+    public Escuela() {
+        this.alumnos = new ArrayList<>();
     }
 
-    public Biblioteca(Integer id, String nombre, String ubicacion, String telefono) {
+    public Escuela(Integer id, String nombre, String direccion, String telefono) {
         this.id = id;
         this.nombre = nombre;
-        this.ubicacion = ubicacion;
+        this.direccion = direccion;
         this.telefono = telefono;
-        this.libros = new ArrayList<>();
+        this.alumnos = new ArrayList<>();
     }
 
     public Integer getId() {
@@ -47,12 +47,12 @@ public class Biblioteca {
         this.nombre = nombre;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getTelefono() {
@@ -63,12 +63,12 @@ public class Biblioteca {
         this.telefono = telefono;
     }
 
-    public List<Libro> getLibros() {
-        return libros;
+    public List<Alumno> getAlumnos() {
+        return alumnos;
     }
 
-    public void setLibros(List<Libro> libros) {
-        this.libros = libros;
+    public void setAlumnos(List<Alumno> alumnos) {
+        this.alumnos = alumnos;
     }
 
     @Override
@@ -89,12 +89,12 @@ public class Biblioteca {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Biblioteca other = (Biblioteca) obj;
+        final Escuela other = (Escuela) obj;
         return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "Biblioteca{" + "id=" + id + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", telefono=" + telefono + ", libros=" + libros + '}';
+        return "Escuela{" + "id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", alumnos=" + alumnos + '}';
     }
 }

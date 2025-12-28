@@ -15,6 +15,8 @@ public interface LibroDAO {
     public Libro addLibro(Libro nuevo);
     public Libro getLibro(Integer id);
     public List<Libro> getLibros();
+    public List<Libro> getLibrosBiblioteca(Integer idBiblioteca);
     public Libro modifyLibro(Libro modificar);
     public Libro deleteLibro(Integer id);
+    
 }
