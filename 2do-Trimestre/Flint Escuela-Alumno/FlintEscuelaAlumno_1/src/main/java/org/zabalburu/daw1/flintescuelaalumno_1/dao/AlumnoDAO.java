@@ -17,5 +17,5 @@ public interface AlumnoDAO {
     public List<Alumno> getAlumnos();
     public Alumno modifyAlumno(Alumno modificar);
     public Alumno deleteAlumno(Integer id);
-    public List<Alumno> getAlumnosEscuela(Integer id); 
+    public List<Alumno> getAlumnosEscuela(Integer idEscuela); 
 }
